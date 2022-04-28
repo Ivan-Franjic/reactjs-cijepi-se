@@ -1,0 +1,30 @@
+.select {
+    margin-top: 3vh !important;
+    margin-left: 1300px !important;
+    min-width: 200px !important;
+    background: rgba(212, 212, 212, 0.315) !important;
+    font-weight: 200 !important;
+    border-width: 2px !important;
+    border-radius: 12px !important;
+    padding-left: 24px !important;
+    padding-bottom: 15px !important;
+    box-shadow: 0px 5px 8px -3px rgba(0, 0, 0, 0.14);
+  }
+  .table-djelatnosti {
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 900px;
+    min-width: 500px;
+  }
+  .naslov {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 300px;
+  }
+  .naslov-div {
+    margin-left: auto !important;
+    margin-left: auto !important;
+    display: block !important;
+  }
+  

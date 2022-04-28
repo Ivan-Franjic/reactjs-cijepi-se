@@ -1,0 +1,18 @@
+.nav-header {
+  text-align: center;
+  color: azure;
+  font-size: 25px;
+  margin-bottom: 3rem;
+  margin-top: 0.3rem;
+}
+.arrow {
+  margin-left: 94px;
+}
+.sidebarBtn {
+  margin-left: 78px !important;
+  margin-top: 15px !important;
+  background-color: transparent !important;
+}
+.sidebarBtn:hover {
+  background-color: #632ce4 !important;
+}
