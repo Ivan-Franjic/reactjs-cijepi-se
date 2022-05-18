@@ -14,7 +14,6 @@
   public $test;
   public $datum;
   public $rezultat;
-  public $token;
 
   public function __construct($db){
    $this->conn = $db;
@@ -23,7 +22,7 @@
   public function read(){
     //query
  
-    $query = "SELECT t.id, t.OIB, k.ime, k.prezime, k.adresa, k.grad, k.zupanija, k.datum_rodenja, t.test, t.datum, t.rezultat, t.token FROM cijepi_se_testiranje t LEFT JOIN cijepi_se_korisnici k ON t.OIB = k.OIB WHERE t.rezultat='Na čekanju'";
+    $query = "SELECT t.id, t.OIB, k.ime, k.prezime, k.adresa, k.grad, k.zupanija, k.datum_rodenja, t.test, t.datum, t.rezultat FROM cijepi_se_testiranje t LEFT JOIN cijepi_se_korisnici k ON t.OIB = k.OIB WHERE t.rezultat='Na čekanju'";
     
     $stmt = $this->conn->prepare($query);
     $stmt->execute();
@@ -34,7 +33,7 @@
    public function readSingle(){
     //query
  
-    $query = 'SELECT TOP 1 t.id, t.OIB, t.test, t.datum, t.rezultat, t.token FROM '. $this->table . ' t WHERE t.id = ?';
+    $query = 'SELECT TOP 1 t.id, t.OIB, t.test, t.datum, t.rezultat FROM '. $this->table . ' t WHERE t.id = ?';
     
 
     $stmt = $this->conn->prepare($query);
@@ -43,20 +42,12 @@
 
     $stmt->execute();
     
-    //$row = $stmt->fetch(PDO::FETCH_ASSOC);
     while($row = $stmt->fetch(PDO::FETCH_ASSOC))
     {
     $this->OIB = $row['OIB'];
-    //$this->ime = $row['ime']; 
-    //$this->prezime = $row['prezime']; 
-    //$this->adresa = $row['adresa'];
-    //$this->grad = $row['grad'];
-    //$this->zupanija = $row['zupanija'];
-    //$this->datum_rodenja = $row['datum_rodenja'];
     $this->test = $row['test'];
     $this->datum = $row['datum'];
     $this->rezultat = $row['rezultat'];
-    $this->token = $row['token'];
 
     }
    }
@@ -97,17 +88,14 @@
    public function read_testovi(){
     //query
  
-    $query = "SELECT t.OIB, k.ime, k.prezime, t.test, t.datum, t.rezultat FROM cijepi_se_testiranje t LEFT JOIN cijepi_se_korisnici k ON t.OIB = k.OIB WHERE t.rezultat<>'Na čekanju'";
+    $query = "SELECT t.OIB, t.test, t.datum, t.rezultat FROM cijepi_se_testiranje t WHERE t.rezultat<>'Na čekanju'";
     
     $stmt = $this->conn->prepare($query);
+
     $stmt->execute();
  
     return $stmt;
    }
 
-   
-
-   
-  
  }
 ?>

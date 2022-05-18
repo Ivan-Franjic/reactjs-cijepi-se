@@ -1,10 +1,7 @@
 import { React, useState, useEffect } from 'react'
-//import Login from '../login/login'
 import useForm from './use_testiranjeEditForm'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-//import validate from './validatePreglediEdit'
-//import './pregledi.css'
 import { Link, useParams } from 'react-router-dom'
 import {
   Paper,
@@ -21,19 +18,18 @@ import {
   FormControlLabel,
 } from '@material-ui/core'
 import { StarRate } from '@mui/icons-material';
+import './testiranje.css'
 
 export default function TestiranjeEdit(props) {
     const { id } = useParams()
     const [successMessage, setSuccessMessage] = useState('')
     const [testiranje, setTestiranje] = useState([])
     const [update, setUpdate] = useState(1)
-    const [disableSelect, setDisableSelect] = useState(false)
     const [newValue, setStartDate] = useState();
     const isWeekday = (date) => {
       const day = date.getDay()
       return day !== 0 && day !== 6
     }
-    //const [newValue, setValue] = useState(new Date());
     
   
   
@@ -43,6 +39,11 @@ export default function TestiranjeEdit(props) {
       setTimeout(() => {
         document.getElementById('redirect').click()
       }, 2000)
+    }
+
+    function Cancel() {
+      document.getElementById('cancelButton').disabled = true
+      document.getElementById('redirect').click()
     }
   
     const myHeaders = new Headers()
@@ -91,48 +92,41 @@ export default function TestiranjeEdit(props) {
 
     const handleExistingValues = (data) => {
       values.OIB = data.OIB
-      //values.ime = data.ime
-      //values.prezime = data.prezime
-      //values.adresa = data.adresa
-      //values.grad = data.grad
-      //values.zupanija = data.zupanija
-      //values.datum_rodenja = data.datum_rodenja
       values.test = data.test
       values.datum = data.datum
       values.rezultat = data.rezultat
-      values.token = data.token
       setStartDate(Date.parse(data.datum))
+      
       setUpdate(update + 1)
     }
-   
     
     console.log(newValue);
   
     return (
       <>
-          <Grid item xs>
-            <Paper className='editContainer' elevation={10}>
+          <Grid item xs className='form_testiranje'>
+            <Paper className='editContainert' elevation={10}>
+            <FormHelperText className='naslov'>Ažuriraj pacijenta</FormHelperText>
               <form onSubmit={handleSubmit}>
                 <Grid className='gridClass' container spacing={3}>
-                <Grid item xs>
-                
-                      
-                  </Grid>
+              
       <Grid item xs>
-      <DatePicker minDate={new Date()} filterDate={isWeekday} name='datum' selected={newValue} onChange={(date) => setStartDate(date)} />
+      <FormHelperText >Datum testiranja</FormHelperText>
+      <DatePicker dateFormat="dd/MM/yyyy" minDate={new Date()} filterDate={isWeekday} onKeyDown={(e) => {
+       e.preventDefault();
+    }} name='datum' selected={newValue} onChange={(date) => setStartDate(date)} />
                       
                   </Grid>
                 
                   <Grid item xs>
                       <>
                         <FormControl variant='outlined' className='selectEdit'>
-                          <InputLabel id='labelRezultati'>Rezultat</InputLabel>
-                          <Select
+                        <FormHelperText >Rezultat</FormHelperText>
+                          <Select className='select_testiranje'
                             labelId='labelRezultati'
                             name='rezultat'
                             value={values.rezultat}
                             onChange={handleChange}
-                            label='Rezultat'
                           >
                             {rezultati.map((rezultat) => (
                               <MenuItem key={rezultat.value} value={rezultat.label}>
@@ -147,14 +141,22 @@ export default function TestiranjeEdit(props) {
                   <Button
                     id='submitButton'
                     type='submit'
-                    variant='contained'
                     color='primary'
-                    className='input'
+                    className='inputt'
                   >
                     Spremi
                   </Button>
+                  <Button
+                    id='cancelButton'
+                    type='submit'
+                    color='primary'
+                    className='inputot'
+                    onClick={Cancel}
+                  >
+                    Odustani
+                  </Button>
                   {successMessage && (
-                    <FormHelperText className='successText'>
+                    <FormHelperText className='successTextt'>
                       {successMessage}
                     </FormHelperText>
                   )}

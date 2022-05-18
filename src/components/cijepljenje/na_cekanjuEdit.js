@@ -1,10 +1,7 @@
 import { React, useState, useEffect } from 'react'
-//import Login from '../login/login'
 import useForm from './use_na_cekanjuEditForm'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-//import validate from './validatePreglediEdit'
-//import './pregledi.css'
 import { Link, useParams } from 'react-router-dom'
 import {
   Paper,
@@ -20,6 +17,7 @@ import {
   FormGroup,
   FormControlLabel,
 } from '@material-ui/core'
+import './na_cekanju.css'
 
 export default function Na_cekanjuEdit(props) {
     const { OIB } = useParams()
@@ -28,8 +26,8 @@ export default function Na_cekanjuEdit(props) {
     const [cjepiva, setCjepiva] = useState([])
     const [update, setUpdate] = useState(1)
     const [disableSelect, setDisableSelect] = useState(false)
-    const [newValue, setStartDate] = useState();
-    const [newValue2, setStartDate2] = useState();
+    const [newValue, setStartDate] = useState(new Date());
+    const [newValue2, setStartDate2] = useState(new Date());
     const isWeekday = (date) => {
       const day = date.getDay()
       return day !== 0 && day !== 6
@@ -42,6 +40,11 @@ export default function Na_cekanjuEdit(props) {
       setTimeout(() => {
         document.getElementById('redirect').click()
       }, 2000)
+    }
+
+    function Cancel() {
+      document.getElementById('cancelButton').disabled = true
+      document.getElementById('redirect').click()
     }
   
     const myHeaders = new Headers()
@@ -98,7 +101,7 @@ export default function Na_cekanjuEdit(props) {
       values.grad = data.grad
       values.zupanija = data.zupanija
       values.datum_rodenja = data.datum_rodenja
-      values.vrsta_cjepiva = data.vrsta_cjepiva
+      values.vrsta_cjepiva = 1
       values.prva_doza_datum = data.prva_doza_datum
       values.prva_doza_status = data.prva_doza_status
       values.druga_doza_datum = data.druga_doza_datum
@@ -108,24 +111,23 @@ export default function Na_cekanjuEdit(props) {
   
     return (
       <>
-          <Grid item xs>
-            <Paper className='editContainer' elevation={10}>
+          <Grid item xs className='form_na_cekanju'>
+            <Paper className='editContainernc' elevation={10}>
+            <FormHelperText className='naslov'>Naruči pacijenta</FormHelperText>
               <form onSubmit={handleSubmit}>
+              
                 <Grid className='gridClass' container spacing={3}>
-                <Grid item xs>
-                
-                      
-                </Grid>
+              
                   <Grid item xs>
                       <>
                         <FormControl variant='outlined' className='selectEdit'>
-                          <InputLabel id='labelCjepivo'>Vrsta cjepiva</InputLabel>
-                          <Select
+                        <FormHelperText >Vrsta cjepiva</FormHelperText>
+                          <Select className='select_na_cekanju'
                             labelId='labelCjepivo'
                             name='vrsta_cjepiva'
-                            value=''
+                            value={values.vrsta_cjepiva}
                             onChange={handleChange}
-                            label='Cjepivo'
+                           
                           >
                             {cjepiva.map((cjepivo) => (
                               <MenuItem key={cjepivo.ID} value={cjepivo.ID}>
@@ -138,26 +140,40 @@ export default function Na_cekanjuEdit(props) {
                   </Grid>
                   
                   <Grid item xs>
-                    <DatePicker minDate={new Date()} filterDate={isWeekday} name='prva_doza_datum' selected={newValue} onChange={(date) => setStartDate(date)} /> 
+                  <FormHelperText >Datum prve doze</FormHelperText>
+                  
+                    <DatePicker dateFormat="dd/MM/yyyy" minDate={new Date()} filterDate={isWeekday} onKeyDown={(e) => {
+       e.preventDefault();
+    }} name='prva_doza_datum' selected={newValue} onChange={(date) => setStartDate(date)} /> 
                   </Grid>
-          
+                  
                   <Grid item xs>
-                    <DatePicker minDate={new Date()} filterDate={isWeekday} name='druga_doza_datum' selected={newValue2} onChange={(date2) => setStartDate2(date2)} />
+                  <FormHelperText >Datum druge doze</FormHelperText>
+                    <DatePicker dateFormat="dd/MM/yyyy" minDate={new Date()} filterDate={isWeekday} onKeyDown={(e) => {
+       e.preventDefault();
+    }} name='druga_doza_datum' selected={newValue2} onChange={(date2) => setStartDate2(date2)} />
                   </Grid>
-                <Grid item xs>
-                  </Grid>
+                
                   <Link id='redirect' to='/' />
                   <Button
                     id='submitButton'
                     type='submit'
-                    variant='contained'
                     color='primary'
-                    className='input'
+                    className='inputnc'
                   >
                     Spremi
                   </Button>
+                  <Button
+                    id='cancelButton'
+                    type='submit'
+                    color='primary'
+                    className='inputonc'
+                    onClick={Cancel}
+                  >
+                    Odustani
+                  </Button>
                   {successMessage && (
-                    <FormHelperText className='successText'>
+                    <FormHelperText className='successTextnc'>
                       {successMessage}
                     </FormHelperText>
                   )}
@@ -169,4 +185,3 @@ export default function Na_cekanjuEdit(props) {
       </>
     )
   }
-  

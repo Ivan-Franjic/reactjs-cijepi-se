@@ -2,16 +2,20 @@
 import * as FaIcons from 'react-icons/fa'
 import { FaPills } from "react-icons/fa";
 import { FaComments } from "react-icons/fa";
+import { FaHourglassHalf } from "react-icons/fa";
+import { FaSyringe } from "react-icons/fa";
+import { FaFolder } from "react-icons/fa";
+import { ImLab } from "react-icons/im";
 
 export const SidebarData = [
   {
-    title: 'Na cekanju',
+    title: 'Na čekanju',
     path: '/',
-    icon: <FaIcons.FaRegClipboard />,
+    icon: <FaIcons.FaHourglassHalf/>,
   },
 
   {
-    title: 'Naruceni',
+    title: 'Naručeni',
     path: 'naruceni',
     icon: <FaIcons.FaRegClipboard />,
   },
@@ -19,18 +23,16 @@ export const SidebarData = [
   {
     title: 'Cijepljeni',
     path: '/cijepljeni',
-    icon: <FaPills />,
+    icon: <FaSyringe />,
   },
   {
     title: 'Testiranje',
     path: '/testiranje',
-    isLoged: false,
-    icon: <FaComments />,
+    icon: <ImLab />,
   },
   {
     title: 'Povijest testiranja',
     path: '/povijest_testiranja',
-    isLoged: false,
-    icon: <FaComments />,
+    icon: <FaFolder />,
   },
 ]

@@ -38,7 +38,6 @@
       'zupanija' => $oNarucen->zupanija,
       'OIB' => $oNarucen->OIB,
       'datum_rodenja' => $oNarucen->datum_rodenja,
-      'token' => $oNarucen->token,
       'vrsta_cjepiva' => $oNarucen->vrsta_cjepiva,
       'prva_doza_datum' => $datumprikaz,
       'prva_doza_status' => $oNarucen->prva_doza_status,
@@ -48,7 +47,7 @@
    echo json_encode($narucen_arr);
  }catch(Exception $e){
   echo json_encode(array(
-   "message" => "Došlo je do pogreške kod učitavanja podataka o pregledu.",
+   "message" => "Došlo je do pogreške kod učitavanja podataka o pacijentu.",
    "error" => $e->getMessage()
   ));
  };

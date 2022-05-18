@@ -6,9 +6,10 @@ import MenuItem from '@material-ui/core/MenuItem'
 import FormHelperText from '@material-ui/core/FormHelperText'
 import InputLabel from '@material-ui/core/InputLabel'
 import FormControl from '@material-ui/core/FormControl'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import SearchBar from 'material-ui-search-bar';
 import EditIcon from '@mui/icons-material/Edit';
+import * as FaIcons from 'react-icons/fa'
 import {
   Delete,
   Visibility,
@@ -133,6 +134,7 @@ const useStyles = makeStyles({
     const [zupanija, setZupanija] = useState('')
     const [povijest_testiranja, setPovijest_testiranja] = useState([])
     const [pt, setPt] = useState([])
+    const [data, setData] = useState('');
   
     const myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
@@ -220,7 +222,7 @@ const useStyles = makeStyles({
 
     return (
         <>
-        <FormControl className='select'>
+        <FormControl className='selectpt'>
         <InputLabel id='lbl-povijest_testiranja'></InputLabel>
         <Select
           disableUnderline
@@ -229,7 +231,7 @@ const useStyles = makeStyles({
           value={zupanija}
           onChange={(e) => handleChangeZupanija(e.target.value)}
         >
-          <MenuItem value='all'>Prikazi sve</MenuItem>
+          <MenuItem value='all'>Prikaži sve</MenuItem>
           {zupanije.map((zupanija) => {
             return (
               <MenuItem key={zupanija.id} value={zupanija.naziv_zupanije}>
@@ -238,12 +240,10 @@ const useStyles = makeStyles({
             )
           })}
         </Select>
-        <FormHelperText>Zupanije</FormHelperText>
+        <FormHelperText className='helper'>Pregled po županiji</FormHelperText>
       </FormControl>
-      <div className='naslov-div'>
-        <h2 className='naslov'>Pregled po zupaniji</h2>
-      </div>
-          <TableContainer className={classes.table} component={Paper}>
+
+          <TableContainer className="table-povijest-testiranja" component={Paper}>
           {rows && (
                 <>
                 <SearchBar
@@ -261,9 +261,9 @@ const useStyles = makeStyles({
                   <TableCell align='right'>Prezime</TableCell>
                   <TableCell align='right'>Adresa</TableCell>
                   <TableCell align='right'>Grad</TableCell>
-                  <TableCell align='right'>Zupanija</TableCell>
+                  <TableCell align='right'>Županija</TableCell>
                   <TableCell align='right'>OIB</TableCell>
-                  <TableCell align='right'>Datum rodenja</TableCell>
+                  <TableCell align='right'>Datum rođenja</TableCell>
                   <TableCell align='right'>Testovi</TableCell>
                 </TableRow>
               </TableHead>
@@ -287,6 +287,13 @@ const useStyles = makeStyles({
                     <TableCell align='right'>{row.zupanija}</TableCell>
                     <TableCell align='right'>{row.OIB}</TableCell>
                     <TableCell align='right'>{row.datum_rodenja}</TableCell>
+                    <TableCell>
+                      <Link to={'/testovi'} state={row.OIB}>
+                        <IconButton collor='primary'>
+                        <FaIcons.FaRegClipboard />
+                        </IconButton>
+                      </Link>
+                    </TableCell>
                   </TableRow>
                 ))
               :(rowsPerPage > 0
@@ -307,6 +314,13 @@ const useStyles = makeStyles({
                     <TableCell align='right'>{row.zupanija}</TableCell>
                     <TableCell align='right'>{row.OIB}</TableCell>
                     <TableCell align='right'>{row.datum_rodenja}</TableCell>
+                    <TableCell>
+                      <Link to={'/povijest_testiranja/testovi/OIB/' + row.OIB}>
+                        <IconButton collor='primary'>
+                          <EditIcon />
+                        </IconButton>
+                      </Link>
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>

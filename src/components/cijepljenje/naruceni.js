@@ -8,7 +8,7 @@ import InputLabel from '@material-ui/core/InputLabel'
 import FormControl from '@material-ui/core/FormControl'
 import { Link } from 'react-router-dom'
 import SearchBar from 'material-ui-search-bar';
-import EditIcon from '@mui/icons-material/Edit';
+import { FaCalendar } from "react-icons/fa";
 import {
   Delete,
   Visibility,
@@ -226,13 +226,15 @@ const useStyles = makeStyles({
     const requestSearch = (searchedVal) => {
       const filteredRows = oRows.filter((row) => {
       
-        return `${row.ime}${row.prezime}${row.adresa}${row.grad}${row.zupanija}${row.OIB}${row.datum_rodenja}${row.cjepivo}${row.prva_doza_datum}${row.prva_doza_status}${row.druga_doza_datum}${row.druga_doza_status}`
+        return `${row.ime}${row.prezime}${row.adresa}${row.grad}${row.zupanija}${row.OIB}${row.datum_rodenja}${row.cjepivo}
+        ${row.prva_doza_datum}${row.prva_doza_status}${row.druga_doza_datum}${row.druga_doza_status}`
             .toLowerCase()
             .includes(searchedVal.toLowerCase());
       });
       setRows(filteredRows);
       setN(filteredRows);
     };
+
     const cancelSearch = () => {
       setSearched('');
       requestSearch('');
@@ -265,7 +267,7 @@ const useStyles = makeStyles({
 
     return (
         <>
-        <FormControl className='select'>
+        <FormControl className='selectn'>
         <InputLabel id='lbl-naruceni'></InputLabel>
         <Select
           disableUnderline
@@ -274,7 +276,7 @@ const useStyles = makeStyles({
           value={zupanija}
           onChange={(e) => handleChangeZupanija(e.target.value)}
         >
-          <MenuItem value='all'>Prikazi sve</MenuItem>
+          <MenuItem value='all'>Prikaži sve</MenuItem>
           {zupanije.map((zupanija) => {
             return (
               <MenuItem key={zupanija.id} value={zupanija.naziv_zupanije}>
@@ -283,36 +285,12 @@ const useStyles = makeStyles({
             )
           })}
         </Select>
-        <FormHelperText>Zupanije</FormHelperText>
+        <FormHelperText className='helper'>Pregled po županiji</FormHelperText>
       </FormControl>
-      <div className='naslov-div'>
-        <h2 className='naslov'>Pregled po zupaniji</h2>
-      </div>
 
-      <FormControl className='select'>
-        <InputLabel id='lbl-naruceni2'></InputLabel>
-        <Select
-          disableUnderline
-          labelId='lbl-naruceni2'
-          id='naruceni2'
-          value={dob}
-          onChange={(e) => handleChangeDob(e.target.value)}
-        >
-          <MenuItem value='all'>Prikazi sve</MenuItem>
-          {dobi.map((dob) => {
-            return (
-              <MenuItem key={dob.value} value={dob.label}>
-                {dob.label}
-              </MenuItem>
-            )
-          })}
-        </Select>
-        <FormHelperText>Dob</FormHelperText>
-      </FormControl>
-      <div className='naslov-div'>
-        <h2 className='naslov'>Pregled po starosti</h2>
-      </div>
-          <TableContainer className={classes.table} component={Paper}>
+     
+      
+          <TableContainer className="table-naruceni" component={Paper}>
           {rows && (
                 <>
                 <SearchBar
@@ -330,9 +308,9 @@ const useStyles = makeStyles({
                   <TableCell align='right'>Prezime</TableCell>
                   <TableCell align='right'>Adresa</TableCell>
                   <TableCell align='right'>Grad</TableCell>
-                  <TableCell align='right'>Zupanija</TableCell>
+                  <TableCell align='right'>Županija</TableCell>
                   <TableCell align='right'>OIB</TableCell>
-                  <TableCell align='right'>Datum rodenja</TableCell>
+                  <TableCell align='right'>Datum rođenja</TableCell>
                   <TableCell align='right'>Cjepivo</TableCell>
                   <TableCell align='right'>Prva doza</TableCell>
                   <TableCell align='right'></TableCell>
@@ -369,7 +347,7 @@ const useStyles = makeStyles({
                     <TableCell>
                       <Link to={'/naruceni/azuriraj/OIB/' + row.OIB}>
                         <IconButton collor='primary'>
-                          <EditIcon />
+                        <FaCalendar />
                         </IconButton>
                       </Link>
                     </TableCell>
@@ -401,7 +379,7 @@ const useStyles = makeStyles({
                     <TableCell>
                       <Link to={'/naruceni/azuriraj/OIB/' + row.OIB}>
                         <IconButton collor='primary'>
-                          <EditIcon />
+                        <FaCalendar />
                         </IconButton>
                       </Link>
                     </TableCell>
@@ -441,3 +419,24 @@ const useStyles = makeStyles({
     
 
 export default Naruceni;
+
+/*<FormControl className='select'>
+<InputLabel id='lbl-naruceni2'></InputLabel>
+<Select
+  disableUnderline
+  labelId='lbl-naruceni2'
+  id='naruceni2'
+  value={dob}
+  onChange={(e) => handleChangeDob(e.target.value)}
+>
+  <MenuItem value='all'>Prikaži sve</MenuItem>
+  {dobi.map((dob) => {
+    return (
+      <MenuItem key={dob.value} value={dob.label}>
+        {dob.label}
+      </MenuItem>
+    )
+  })}
+</Select>
+<FormHelperText>Pregled po starosti</FormHelperText>
+</FormControl>*/

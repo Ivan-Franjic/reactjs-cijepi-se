@@ -5,7 +5,6 @@ header("Access-Control-Allow-Headers: access");
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-//require __DIR__ . '/includes/connection.php';
 include_once '../../includes/connection.php';
 include_once '../../models/cijepljenje.php';
 
@@ -41,8 +40,7 @@ include_once '../../models/cijepljenje.php';
       'zupanija' => $zupanija,
       'OIB' => $OIB,
       'datum_rodenja' => $datum_prikaz_rodenje,
-      'god' => $god,
-      'token' => $token
+      'god' => $god
      );
      array_push($na_cekanju_arr, $na_cekanju_item);
     }

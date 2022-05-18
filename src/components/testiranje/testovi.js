@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
-import { Link } from 'react-router-dom'
 import SearchBar from 'material-ui-search-bar';
-import EditIcon from '@mui/icons-material/Edit';
+import { useLocation } from 'react-router-dom';
 import {
   Delete,
   Visibility,
@@ -25,6 +24,7 @@ import {
   TableFooter,
   TablePagination,
 } from '@material-ui/core';
+import './testiranje.css'
 
 const useStyles = makeStyles({
     table: {
@@ -121,7 +121,8 @@ const useStyles = makeStyles({
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
     const [searched, setSearched] = useState('');
-  
+    const location = useLocation();
+
     const myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
     useEffect(() => {
@@ -171,7 +172,7 @@ const useStyles = makeStyles({
 
     return (
         <>
-          <TableContainer className={classes.table} component={Paper}>
+          <TableContainer className="table-testiranje" component={Paper}>
           {rows && (
                 <>
                 <SearchBar
@@ -199,12 +200,18 @@ const useStyles = makeStyles({
                         : rows
                       ).map((row, index) => (
                   <TableRow>
+                    {location.state === row.OIB ? (
+                      <>
                     <TableCell component='th' scope='row'>
                       {index+1}
                     </TableCell>
                     <TableCell align='right'>{row.test}</TableCell>
                     <TableCell align='right'>{row.datum}</TableCell>
                     <TableCell align='right'>{row.rezultat}</TableCell>
+                    </>
+                    ) :(
+                      ''
+                      )}
                   </TableRow>
                 ))}
               </TableBody>

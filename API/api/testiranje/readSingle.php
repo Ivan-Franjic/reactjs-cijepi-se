@@ -24,21 +24,12 @@
 
     $datumprikaz=$godina.'-'.$mjesec.'-'.$dan;
 
-    
-  // if($oTest->OIB != null){
       $test_arr = array(
       'id' => $oTest->id,
       'OIB' => $oTest->OIB,
-      //'ime' => $oTest->ime,
-      //'prezime' => $oTest->prezime,
-      //'adresa' => $oTest->adresa,
-      //'grad' => $oTest->grad,
-      //'zupanija' => $oTest->zupanija,
-      //'datum_rodenja' => $oTest->datum_rodenja,
       'test' => $oTest->test,
       'datum' => $datumprikaz,
       'rezultat' => $oTest->rezultat,
-      'token' => $oTest->token,
    );
    echo json_encode($test_arr);
    //}else{

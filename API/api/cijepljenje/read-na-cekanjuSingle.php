@@ -24,7 +24,6 @@
       'zupanija' => $oNa_cekanju->zupanija,
       'OIB' => $oNa_cekanju->OIB,
       'datum_rodenja' => $oNa_cekanju->datum_rodenja,
-      'token' => $oNa_cekanju->token,
       'vrsta_cjepiva' => $oNa_cekanju->vrsta_cjepiva,
       'prva_doza_datum' => $oNa_cekanju->prva_doza_datum,
       'prva_doza_status' => $oNa_cekanju->prva_doza_status,
@@ -34,7 +33,7 @@
    echo json_encode($na_cekanju_arr);
  }catch(Exception $e){
   echo json_encode(array(
-   "message" => "Došlo je do pogreške kod učitavanja podataka o pregledu.",
+   "message" => "Došlo je do pogreške kod učitavanja podataka o pacijentu.",
    "error" => $e->getMessage()
   ));
  };

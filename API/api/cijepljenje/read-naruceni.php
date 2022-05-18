@@ -58,8 +58,7 @@ include_once '../../models/cijepljenje.php';
       'prva_doza_datum' => $datum_prikaz_1,
       'prva_doza_status' => $prva_doza_status,
       'druga_doza_datum' => $datum_prikaz_2,
-      'druga_doza_status' => $druga_doza_status,
-      'token' => $token
+      'druga_doza_status' => $druga_doza_status
      );
      array_push($narucen_arr, $narucen_item);
     }

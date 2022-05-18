@@ -14,5 +14,11 @@
   background-color: transparent !important;
 }
 .sidebarBtn:hover {
-  background-color: #632ce4 !important;
+  background-color: #1E90FF !important;
+}
+
+.selected{
+  background: #252831;
+  border-left: 4px solid #1E90FF;
+  cursor: pointer;
 }

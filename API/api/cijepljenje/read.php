@@ -1,11 +1,9 @@
 <?php 
-  // Headers
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: access");
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-//require __DIR__ . '/includes/connection.php';
 include_once '../../includes/connection.php';
 include_once '../../models/cijepljenje.php';
 
@@ -19,7 +17,6 @@ include_once '../../models/cijepljenje.php';
    $result = $oCijepljeni->read();
    $num = $result->rowCount();
 
-   //if($num >0){
     $cijepljen_arr = array();
     while($row = $result->fetch(PDO::FETCH_ASSOC)){
      extract($row);
@@ -34,9 +31,6 @@ include_once '../../models/cijepljenje.php';
 			$mjesec_2=substr($datum_baza_2, -4, 2);
 			$godina_2=substr($datum_baza_2, 0, -4);
 			$datum_prikaz_2=$dan_2.".".$mjesec_2.".".$godina_2.".";
-			//$datum_razlika=$danasnji_datum-$datum_baza_rodenje;
-			//$godina=substr($datum_razlika, 0, 2);
-			//$god = (int)$godina;
 
      $cijepljen_item = array(
       'ime' => html_entity_decode($ime),
@@ -51,17 +45,11 @@ include_once '../../models/cijepljenje.php';
       'prva_doza_datum' => $prva_doza_datum,
       'prva_doza_status' => $prva_doza_status,
       'druga_doza_datum' => $datum_prikaz_2,
-      'druga_doza_status' => $druga_doza_status,
-      'token' => $token
+      'druga_doza_status' => $druga_doza_status
      );
      array_push($cijepljen_arr, $cijepljen_item);
     }
     echo json_encode($cijepljen_arr);
-   //}else{
-    //echo json_encode(array(
-     //'message' => 'Cijepljeni nisu pronađeni'
-    //));
-   //}
   }catch(Exception $e){
    echo json_encode(array('try_err'=> $e.getMessage()));
   };

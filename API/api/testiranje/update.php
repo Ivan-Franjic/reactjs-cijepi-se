@@ -16,21 +16,14 @@
  $data = json_decode(file_get_contents("php://input"));
 
  $oTest->id = $data->id;
- //$oTest->ime = $data->ime;
- //$oTest->prezime = $data->prezime;
- //$oTest->adresa = $data->adresa;
- //$oTest->grad = $data->grad;
- //$oTest->zupanija = $data->zupanija;
  $oTest->OIB = $data->OIB;
- //$oTest->datum_rodenja = $data->datum_rodenja;
  $oTest->test = $data->test;
  $oTest->datum = $data->datum;
  $oTest->rezultat = $data->rezultat;
- $oTest->token = $data->token;
 
  if($oTest->update()){
-  echo json_encode(array('message' => 'Pregled uspješno ažuriran'));
+  echo json_encode(array('message' => 'Pacijent uspješno ažuriran!'));
  }else{
-  echo json_encode(array('message' => 'Pregled neuspješno ažuriran'));
+  echo json_encode(array('message' => 'Pacijent neuspješno ažuriran!'));
  }
 ?>

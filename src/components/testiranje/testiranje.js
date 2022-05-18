@@ -8,7 +8,7 @@ import InputLabel from '@material-ui/core/InputLabel'
 import FormControl from '@material-ui/core/FormControl'
 import { Link } from 'react-router-dom'
 import SearchBar from 'material-ui-search-bar';
-import EditIcon from '@mui/icons-material/Edit';
+import { FaCalendar } from "react-icons/fa";
 import {
   Delete,
   Visibility,
@@ -218,7 +218,7 @@ const useStyles = makeStyles({
 
     return (
         <>
-        <FormControl className='select'>
+        <FormControl className='selectt'>
         <InputLabel id='lbl-testiranje'></InputLabel>
         <Select
           disableUnderline
@@ -227,7 +227,7 @@ const useStyles = makeStyles({
           value={zupanija}
           onChange={(e) => handleChangeZupanija(e.target.value)}
         >
-          <MenuItem value='all'>Prikazi sve</MenuItem>
+          <MenuItem value='all'>Prikaži sve</MenuItem>
           {zupanije.map((zupanija) => {
             return (
               <MenuItem key={zupanija.id} value={zupanija.naziv_zupanije}>
@@ -236,12 +236,10 @@ const useStyles = makeStyles({
             )
           })}
         </Select>
-        <FormHelperText>Zupanije</FormHelperText>
+        <FormHelperText className='helper'>Pregled po županiji</FormHelperText>
       </FormControl>
-      <div className='naslov-div'>
-        <h2 className='naslov'>Pregled po zupaniji</h2>
-      </div>
-          <TableContainer className={classes.table} component={Paper}>
+     
+          <TableContainer className="table-testiranje" component={Paper}>
           {rows && (
                 <>
                 <SearchBar
@@ -259,9 +257,9 @@ const useStyles = makeStyles({
                   <TableCell align='right'>Prezime</TableCell>
                   <TableCell align='right'>Adresa</TableCell>
                   <TableCell align='right'>Grad</TableCell>
-                  <TableCell align='right'>Zupanija</TableCell>
+                  <TableCell align='right'>Županija</TableCell>
                   <TableCell align='right'>OIB</TableCell>
-                  <TableCell align='right'>Datum rodenja</TableCell>
+                  <TableCell align='right'>Datum rođenja</TableCell>
                   <TableCell align='right'>Vrsta testa</TableCell>
                   <TableCell align='right'>Datum testiranja</TableCell>
                   <TableCell align='right'>Rezultat</TableCell>
@@ -294,7 +292,7 @@ const useStyles = makeStyles({
                     <TableCell>
                       <Link to={'/testiranje/azuriraj/id/' + row.id}>
                         <IconButton collor='primary'>
-                          <EditIcon />
+                        <FaCalendar />
                         </IconButton>
                       </Link>
                     </TableCell>
@@ -324,7 +322,7 @@ const useStyles = makeStyles({
                     <TableCell>
                       <Link to={'/testiranje/azuriraj/id/' + row.id}>
                         <IconButton collor='primary'>
-                          <EditIcon />
+                        <FaCalendar />
                         </IconButton>
                       </Link>
                     </TableCell>

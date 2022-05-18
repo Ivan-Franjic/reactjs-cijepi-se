@@ -23,8 +23,8 @@
  $oPacijent->druga_doza_status = $data->druga_doza_status;
 
  if($oPacijent->update_na_cekanju()){
-  echo json_encode(array('message' => 'Pregled uspješno ažuriran'));
+  echo json_encode(array('message' => 'Pacijent uspješno ažuriran!'));
  }else{
-  echo json_encode(array('message' => 'Pregled neuspješno ažuriran'));
+  echo json_encode(array('message' => 'Pacijent neuspješno ažuriran!'));
  }
 ?>

@@ -5,7 +5,6 @@ header("Access-Control-Allow-Headers: access");
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-//require __DIR__ . '/includes/connection.php';
 include_once '../../includes/connection.php';
 include_once '../../models/testiranje.php';
 
@@ -46,8 +45,7 @@ include_once '../../models/testiranje.php';
       'datum_rodenja' => $datum_prikaz_rodenje,
       'test' => $test,
       'datum' => $datum_prikaz_1,
-      'rezultat' => $rezultat,
-      'token' => $token
+      'rezultat' => $rezultat
      );
      array_push($testiran_arr, $testiran_item);
     }

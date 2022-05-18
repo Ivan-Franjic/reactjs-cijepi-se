@@ -15,8 +15,6 @@ const useForm = (OIB, newValue, newValue2, Success ) => {
     druga_doza_status: '',
   })
 
-  const [errors, setErrors] = useState({})
-
   const handleChange = (e) => {
     const { name, value} = e.target
     setValues({
@@ -27,7 +25,7 @@ const useForm = (OIB, newValue, newValue2, Success ) => {
   
   const handleSubmit = (e) => {
     e.preventDefault()
-    //var error = validate(values)
+    
     let formattedDate = `${
       newValue.getMonth() + 1
     }/${newValue.getDate()}/${newValue.getFullYear()}`;
@@ -37,7 +35,7 @@ const useForm = (OIB, newValue, newValue2, Success ) => {
     var dan='';
     var godina='';
     var mjesecdo9= datumprikaz.substring(0, 2);
-    
+  
     if(mjesecdo9=='1/' || mjesecdo9=='2/' || mjesecdo9=='3/' || mjesecdo9=='4/' || mjesecdo9=='5/' || mjesecdo9=='6/' || mjesecdo9=='7/' || mjesecdo9=='8/' || mjesecdo9=='9/'){
       var mjesec='0' + datumprikaz.substring(0, 1);
       var dan= datumprikaz.substring(2, 4);
@@ -65,7 +63,7 @@ const useForm = (OIB, newValue, newValue2, Success ) => {
     }
     var datumprikazstring=godina+mjesec+dan;
     var datumbaza=parseInt(datumprikazstring);
-
+ 
     let formattedDate2 = `${
       newValue2.getMonth() + 1
     }/${newValue2.getDate()}/${newValue2.getFullYear()}`;
@@ -103,8 +101,8 @@ const useForm = (OIB, newValue, newValue2, Success ) => {
     }
     var datumprikazstring2=godina2+mjesec2+dan2;
     var datumbaza2=parseInt(datumprikazstring2);
-
-    let requestOptions = {}
+    
+      let requestOptions = {}
         requestOptions = {
           method: 'PUT',
           headers: { 'Content-Type': 'aplication/json' },
@@ -133,8 +131,8 @@ const useForm = (OIB, newValue, newValue2, Success ) => {
           //window.location.reload()
         })
         //.catch((error) => {
-         // console.log(
-           // 'There has been a problem with your fetch operation:',
+          //console.log(
+            //'There has been a problem with your fetch operation:',
            // error
          // )
        // })

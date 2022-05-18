@@ -10,21 +10,109 @@
     padding-bottom: 15px !important;
     box-shadow: 0px 5px 8px -3px rgba(0, 0, 0, 0.14);
   }
-  .table-djelatnosti {
+  .table-naruceni {
     margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 900px;
+    margin-left: 270px;
+    max-width: calc(100% - 270px);
     min-width: 500px;
   }
-  .naslov {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    margin-left: 300px;
+ 
+  .form_naruceni {
+    position: fixed; /* or absolute */
+    top: 30%;
+    left: 32%;
   }
-  .naslov-div {
-    margin-left: auto !important;
-    margin-left: auto !important;
-    display: block !important;
+
+  .editContainern {
+    padding: 100px;
+    width: 600px !important;
+    height: 150px !important;
+  }
+
+  .naslov {
+    position:relative;
+    top:-70px;
+    right:70px;
+    font-size: 20px !important;
+    color:#2f2f2f!important;
+  }
+
+  .selectn {
+    padding: 5px !important;
+    border: none !important;
+    outline: none !important;
+    min-width: 200px !important;
+    margin-top: 50px !important;
+    margin-left: 270px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    cursor: pointer !important;
+    border-radius: 30px !important;
+    text-align: center !important;
+    box-shadow: 0 6px 20px -5px rgba(0,0,0,0.4) !important;
+    background: lightgray;
+  }
+  
+  .helper{
+
+    text-align: center !important;
+  }
+
+  .inputn {
+    width: 150px !important;
+    height: 40px !important;
+    border: none !important;
+    outline: none !important;
+    background: green !important;
+    color: #fff !important;
+    font-size: 15px !important;
+    border-radius: 40px !important;
+    text-align: center !important;
+    box-shadow: 0 6px 20px -5px rgba(0,0,0,0.4) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    cursor: pointer !important;
+    position:relative;
+    top:20px;
+    right:-350px;
+  }
+
+  .inputon {
+    width: 150px !important;
+    height: 40px !important;
+    margin-left: 20px !important;
+    border: none !important;
+    outline: none !important;
+    background: #2f2f2f !important;
+    color: #fff !important;
+    font-size: 15px !important;
+    border-radius: 40px !important;
+    text-align: center !important;
+    box-shadow: 0 6px 20px -5px rgba(0,0,0,0.4) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    cursor: pointer !important;
+    position:relative;
+    top:20px;
+    right:-350px;
+  }
+
+  .successTextn{
+    width: 300px !important;
+    height: 40px !important;
+    border: none !important;
+    outline: none !important;
+    background: lightgreen !important;
+    color: green !important;
+    font-size: 20px !important;
+    border-radius: 20px !important;
+    text-align: center !important;
+    box-shadow: 0 6px 20px -5px rgba(0,0,0,0.4) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    cursor: pointer !important;
+    position:relative;
+    top:-400px;
+    right:150px;
   }
   

@@ -15,8 +15,6 @@ const useForm = (OIB, newValue, newValue2, Success ) => {
     druga_doza_status: '',
   })
 
-  const [errors, setErrors] = useState({})
-
   const handleChange = (e) => {
     const { name, value} = e.target
     setValues({
@@ -27,7 +25,10 @@ const useForm = (OIB, newValue, newValue2, Success ) => {
   
   const handleSubmit = (e) => {
     e.preventDefault()
-    //var error = validate(values)
+    var datumostaje=values.prva_doza_datum;
+    var datumostaje2=values.druga_doza_datum;
+
+    try{
     let formattedDate = `${
       newValue.getMonth() + 1
     }/${newValue.getDate()}/${newValue.getFullYear()}`;
@@ -65,7 +66,17 @@ const useForm = (OIB, newValue, newValue2, Success ) => {
     }
     var datumprikazstring=godina+mjesec+dan;
     var datumbaza=parseInt(datumprikazstring);
+  }
+  catch{
+    var dano2= datumostaje.substring(8, 10);
+    var mjeseco2= datumostaje.substring(5, 7);
+    var godinao2= datumostaje.substring(0, 4);
+    var datumprikazstringo2=godinao2+mjeseco2+dano2;
+    var datumbaza=parseInt(datumprikazstringo2);
 
+  }
+
+  try{
     let formattedDate2 = `${
       newValue2.getMonth() + 1
     }/${newValue2.getDate()}/${newValue2.getFullYear()}`;
@@ -103,6 +114,15 @@ const useForm = (OIB, newValue, newValue2, Success ) => {
     }
     var datumprikazstring2=godina2+mjesec2+dan2;
     var datumbaza2=parseInt(datumprikazstring2);
+  }
+  catch{
+    var danod2= datumostaje2.substring(8, 10);
+    var mjesecod2= datumostaje2.substring(5, 7);
+    var godinaod2= datumostaje2.substring(0, 4);
+    var datumprikazstringod2=godinaod2+mjesecod2+danod2;
+    var datumbaza2=parseInt(datumprikazstringod2);
+
+  }
 
     let requestOptions = {}
         requestOptions = {
@@ -130,8 +150,8 @@ const useForm = (OIB, newValue, newValue2, Success ) => {
         .then((response) => response.json())
         .then((data) => {
           Success(data.message)
-          //window.location.reload()
         })
+
         //.catch((error) => {
          // console.log(
            // 'There has been a problem with your fetch operation:',
