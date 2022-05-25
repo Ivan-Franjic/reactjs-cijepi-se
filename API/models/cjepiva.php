@@ -11,8 +11,7 @@
   }
 
   public function read(){
-    //query
- 
+
     $query = "SELECT cj.ID, cj.naziv_cjepiva FROM cijepi_se_cjepiva cj";
     
     $stmt = $this->conn->prepare($query);

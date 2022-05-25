@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
-import Sidebar from './Navbar/sidebar'
+import Sidebar from './Sidebar/sidebar'
 import Na_cekanju from './components/cijepljenje/na_cekanju';
 import Na_cekanjuEdit from './components/cijepljenje/na_cekanjuEdit';
 import Naruceni from './components/cijepljenje/naruceni';

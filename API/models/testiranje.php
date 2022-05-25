@@ -20,8 +20,7 @@
   }
 
   public function read(){
-    //query
- 
+
     $query = "SELECT t.id, t.OIB, k.ime, k.prezime, k.adresa, k.grad, k.zupanija, k.datum_rodenja, t.test, t.datum, t.rezultat FROM cijepi_se_testiranje t LEFT JOIN cijepi_se_korisnici k ON t.OIB = k.OIB WHERE t.rezultat='Na čekanju'";
     
     $stmt = $this->conn->prepare($query);
@@ -31,8 +30,7 @@
    }
 
    public function readSingle(){
-    //query
- 
+
     $query = 'SELECT TOP 1 t.id, t.OIB, t.test, t.datum, t.rezultat FROM '. $this->table . ' t WHERE t.id = ?';
     
 
@@ -75,8 +73,7 @@
    }
 
    public function read_povijest(){
-    //query
- 
+
     $query = "SELECT DISTINCT t.OIB, k.ime, k.prezime, k.adresa, k.grad, k.zupanija, k.datum_rodenja FROM cijepi_se_testiranje t LEFT JOIN cijepi_se_korisnici k ON t.OIB = k.OIB";
     
     $stmt = $this->conn->prepare($query);
@@ -86,8 +83,7 @@
    }
 
    public function read_testovi(){
-    //query
- 
+
     $query = "SELECT t.OIB, t.test, t.datum, t.rezultat FROM cijepi_se_testiranje t WHERE t.rezultat<>'Na čekanju'";
     
     $stmt = $this->conn->prepare($query);
