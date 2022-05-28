@@ -15,9 +15,6 @@ include_once '../../models/testiranje.php';
 
   try{
    $result = $oTestiranje_povijest->read_povijest();
-   $num = $result->rowCount();
-
-   //if($num >0){
     $testiranp_arr = array();
     while($row = $result->fetch(PDO::FETCH_ASSOC)){
      extract($row);
@@ -39,12 +36,10 @@ include_once '../../models/testiranje.php';
      array_push($testiranp_arr, $testiranp_item);
     }
     echo json_encode($testiranp_arr);
-   //}else{
-    //echo json_encode(array(
-     //'message' => 'Cijepljeni nisu pronađeni'
-    //));
-   //}
   }catch(Exception $e){
-   echo json_encode(array('try_err'=> $e.getMessage()));
-  };
+    echo json_encode(array(
+     "message" => "Došlo je do pogreške kod učitavanja podataka.",
+     "error" => $e->getMessage()
+    ));
+   };
   

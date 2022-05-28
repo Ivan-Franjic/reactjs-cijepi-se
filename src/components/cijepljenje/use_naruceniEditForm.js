@@ -2,13 +2,6 @@ import { useState } from 'react'
 
 const useForm = (OIB, newValue, newValue2, Success ) => {
   const [values, setValues] = useState({
-    ime: '',
-    prezime: '',
-    adresa: '',
-    grad: '',
-    zupanija: '',
-    datum_rodenja: '',
-    vrsta_cjepiva: '',
     prva_doza_datum: '',
     prva_doza_status: '',
     druga_doza_datum: '',
@@ -33,7 +26,6 @@ const useForm = (OIB, newValue, newValue2, Success ) => {
       newValue.getMonth() + 1
     }/${newValue.getDate()}/${newValue.getFullYear()}`;
     var datumprikaz=formattedDate;
-    console.log(datumprikaz);
     var mjesec='';
     var dan='';
     var godina='';
@@ -81,7 +73,6 @@ const useForm = (OIB, newValue, newValue2, Success ) => {
       newValue2.getMonth() + 1
     }/${newValue2.getDate()}/${newValue2.getFullYear()}`;
     var datumprikaz2=formattedDate2;
-    console.log(datumprikaz2);
     var mjesec2='';
     var dan2='';
     var godina2='';
@@ -130,12 +121,6 @@ const useForm = (OIB, newValue, newValue2, Success ) => {
           headers: { 'Content-Type': 'aplication/json' },
           body: JSON.stringify({
             OIB: OIB,
-            ime: values.ime,
-            prezime: values.prezime,
-            adresa: values.adresa,
-            zupanija: values.zupanija,
-            datum_rodenja: values.datum_rodenja,
-            vrsta_cjepiva: values.vrsta_cjepiva,
             prva_doza_datum: datumbaza,
             prva_doza_status: values.prva_doza_status,
             druga_doza_datum: datumbaza2,
@@ -151,14 +136,6 @@ const useForm = (OIB, newValue, newValue2, Success ) => {
         .then((data) => {
           Success(data.message)
         })
-
-        //.catch((error) => {
-         // console.log(
-           // 'There has been a problem with your fetch operation:',
-           // error
-         // )
-       // })
-    
   }
 
   return { handleChange, values, handleSubmit}

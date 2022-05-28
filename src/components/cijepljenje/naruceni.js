@@ -131,7 +131,6 @@ const useStyles = makeStyles({
     const [isSelectActive, setIsSelectActive] = useState(false)
     const [zupanije, setZupanije] = useState([])
     const [zupanija, setZupanija] = useState('')
-    const [dob, setDob] = useState('')
     const [naruceni, setNaruceni] = useState([])
     const [n, setN] = useState([])
   
@@ -160,56 +159,12 @@ const useStyles = makeStyles({
       setN(naruceni)
       setNaruceni(naruceni)
     }
-   
-  
-    const dobi = [
-      { value: 1, label: 'Stariji od 18' },
-      { value: 2, label: 'Stariji od 25' },
-      { value: 3, label: 'Stariji od 35' },
-      { value: 4, label: 'Stariji od 45' },
-      { value: 5, label: 'Stariji od 65' },
-      { value: 6, label: 'Stariji od 80' }
-    ]
-
-    const handleChangeDob = (dob) => {
-      setDob(dob)
-      if (dob === 'all') {
-        setIsSelectActive(false)
-      } 
-      else if(dob==="Stariji od 18")
-      {
-        console.log(dob)
-        setN(naruceni.filter((data) => data.god >= 18))
-        n && setIsSelectActive(true)
-      }else if(dob==="Stariji od 25"){
-        console.log(dob)
-        setN(naruceni.filter((data) => data.god >= 25))
-        n && setIsSelectActive(true)
-      }else if(dob==="Stariji od 35"){
-        console.log(dob)
-        setN(naruceni.filter((data) => data.god >= 35))
-        n && setIsSelectActive(true)
-      }else if(dob==="Stariji od 45"){
-        console.log(dob)
-        setN(naruceni.filter((data) => data.god >= 45))
-        n && setIsSelectActive(true)
-      }else if(dob==="Stariji od 65"){
-        console.log(dob)
-        setN(naruceni.filter((data) => data.god >= 65))
-        n && setIsSelectActive(true)
-      }else{
-        console.log(dob)
-        setN(naruceni.filter((data) => data.god >= 80))
-        n && setIsSelectActive(true)
-      }
-    }
 
     const handleChangeZupanija = (zupanija) => {
       setZupanija(zupanija)
       if (zupanija === 'all') {
         setIsSelectActive(false)
       } else {
-        console.log(zupanija)
         setN(naruceni.filter((data) => data.zupanija === zupanija))
         n && setIsSelectActive(true)
       }
@@ -419,24 +374,3 @@ const useStyles = makeStyles({
     
 
 export default Naruceni;
-
-/*<FormControl className='select'>
-<InputLabel id='lbl-naruceni2'></InputLabel>
-<Select
-  disableUnderline
-  labelId='lbl-naruceni2'
-  id='naruceni2'
-  value={dob}
-  onChange={(e) => handleChangeDob(e.target.value)}
->
-  <MenuItem value='all'>Prikaži sve</MenuItem>
-  {dobi.map((dob) => {
-    return (
-      <MenuItem key={dob.value} value={dob.label}>
-        {dob.label}
-      </MenuItem>
-    )
-  })}
-</Select>
-<FormHelperText>Pregled po starosti</FormHelperText>
-</FormControl>*/

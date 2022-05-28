@@ -163,7 +163,6 @@ const useStyles = makeStyles({
       if (zupanija === 'all') {
         setIsSelectActive(false)
       } else {
-        console.log(zupanija)
         setC(cijepljeni.filter((data) => data.zupanija === zupanija))
         c && setIsSelectActive(true)
       }

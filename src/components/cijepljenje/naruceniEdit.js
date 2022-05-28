@@ -27,7 +27,6 @@ export default function NaruceniEdit(props) {
     const [successMessage, setSuccessMessage] = useState('')
     const [naruceni, setNaruceni] = useState([])
     const [update, setUpdate] = useState(1)
-    const [disableSelect, setDisableSelect] = useState(false)
     const [newValue, setStartDate] = useState();
     const [newValue2, setStartDate2] = useState();
     const isWeekday = (date) => {
@@ -88,13 +87,6 @@ export default function NaruceniEdit(props) {
     )
   
     const handleExistingValues = (data) => {
-      values.ime = data.ime
-      values.prezime = data.prezime
-      values.adresa = data.adresa
-      values.grad = data.grad
-      values.zupanija = data.zupanija
-      values.datum_rodenja = data.datum_rodenja
-      values.vrsta_cjepiva = data.vrsta_cjepiva
       values.prva_doza_datum = data.prva_doza_datum
       values.prva_doza_status = data.prva_doza_status
       values.druga_doza_datum = data.druga_doza_datum
@@ -103,8 +95,6 @@ export default function NaruceniEdit(props) {
       setStartDate2(Date.parse(data.druga_doza_datum))
       setUpdate(update + 1)
     }
-    console.log(newValue);
-    console.log(newValue2);
   
     return (
       <>

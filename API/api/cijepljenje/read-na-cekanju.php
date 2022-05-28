@@ -15,9 +15,7 @@ include_once '../../models/cijepljenje.php';
 
   try{
    $result = $oNa_cekanju->read_na_cekanju();
-   $num = $result->rowCount();
 
-   //if($num >0){
     $na_cekanju_arr = array();
     while($row = $result->fetch(PDO::FETCH_ASSOC)){
      extract($row);
@@ -26,10 +24,6 @@ include_once '../../models/cijepljenje.php';
 				$mjesec_rodenje=substr($datum_baza_rodenje, -4, 2);
 				$godina_rodenje=substr($datum_baza_rodenje, 0, -4);
 				$datum_prikaz_rodenje=$dan_rodenje.".".$mjesec_rodenje.".".$godina_rodenje.".";
-        $danasnji_datum=Date("Ymd");
-        $datum_razlika=($danasnji_datum-$datum_baza_rodenje);
-        $godina=substr($datum_razlika, 0, 2);
-        $god = (int)$godina;
         
      $na_cekanju_item = array(
       'ime' => html_entity_decode($ime),
@@ -38,18 +32,15 @@ include_once '../../models/cijepljenje.php';
       'grad' => $grad,
       'zupanija' => $zupanija,
       'OIB' => $OIB,
-      'datum_rodenja' => $datum_prikaz_rodenje,
-      'god' => $god
+      'datum_rodenja' => $datum_prikaz_rodenje
      );
      array_push($na_cekanju_arr, $na_cekanju_item);
     }
     echo json_encode($na_cekanju_arr);
-   //}else{
-    //echo json_encode(array(
-     //'message' => 'Cijepljeni nisu pronađeni'
-    //));
-   //}
   }catch(Exception $e){
-   echo json_encode(array('try_err'=> $e.getMessage()));
-  };
+    echo json_encode(array(
+     "message" => "Došlo je do pogreške kod učitavanja podataka.",
+     "error" => $e->getMessage()
+    ));
+   };
   

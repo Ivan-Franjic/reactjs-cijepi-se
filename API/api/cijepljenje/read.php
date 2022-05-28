@@ -15,8 +15,6 @@ include_once '../../models/cijepljenje.php';
 
   try{
    $result = $oCijepljeni->read();
-   $num = $result->rowCount();
-
     $cijepljen_arr = array();
     while($row = $result->fetch(PDO::FETCH_ASSOC)){
      extract($row);
@@ -51,6 +49,9 @@ include_once '../../models/cijepljenje.php';
     }
     echo json_encode($cijepljen_arr);
   }catch(Exception $e){
-   echo json_encode(array('try_err'=> $e.getMessage()));
-  };
+    echo json_encode(array(
+     "message" => "Došlo je do pogreške kod učitavanja podataka.",
+     "error" => $e->getMessage()
+    ));
+   };
   

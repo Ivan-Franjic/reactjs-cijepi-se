@@ -15,9 +15,6 @@ include_once '../../models/zupanije.php';
 
   try{
    $result = $oZupanije->read();
-   $num = $result->rowCount();
-
-   //if($num >0){
     $zupanije_arr = array();
     while($row = $result->fetch(PDO::FETCH_ASSOC)){
      extract($row);
@@ -28,12 +25,10 @@ include_once '../../models/zupanije.php';
      array_push($zupanije_arr, $zupanije_item);
     }
     echo json_encode($zupanije_arr);
-   //}else{
-    //echo json_encode(array(
-     //'message' => 'Cijepljeni nisu pronađeni'
-    //));
-   //}
   }catch(Exception $e){
-   echo json_encode(array('try_err'=> $e.getMessage()));
-  };
+    echo json_encode(array(
+     "message" => "Došlo je do pogreške kod učitavanja podataka.",
+     "error" => $e->getMessage()
+    ));
+   };
   

@@ -134,7 +134,6 @@ const useStyles = makeStyles({
     const [zupanija, setZupanija] = useState('')
     const [povijest_testiranja, setPovijest_testiranja] = useState([])
     const [pt, setPt] = useState([])
-    const [data, setData] = useState('');
   
     const myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
@@ -167,7 +166,6 @@ const useStyles = makeStyles({
       if (zupanija === 'all') {
         setIsSelectActive(false)
       } else {
-        console.log(zupanija)
         setPt(povijest_testiranja.filter((data) => data.zupanija === zupanija))
         pt && setIsSelectActive(true)
       }

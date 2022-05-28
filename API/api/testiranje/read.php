@@ -15,10 +15,7 @@ include_once '../../models/testiranje.php';
 
   try{
    $result = $oTestiranje->read();
-   //$num = $result->rowCount();
-
-   //if($num >0){
-    $testiran_arr = array();
+   $testiran_arr = array();
     while($row = $result->fetch(PDO::FETCH_ASSOC)){
      extract($row);
      $datum_baza_rodenje=$datum_rodenja;
@@ -49,12 +46,10 @@ include_once '../../models/testiranje.php';
      array_push($testiran_arr, $testiran_item);
     }
     echo json_encode($testiran_arr);
-   //}else{
-    //echo json_encode(array(
-     //'message' => 'Cijepljeni nisu pronađeni'
-    //));
-   //}
   }catch(Exception $e){
-   echo json_encode(array('try_err'=> $e.getMessage()));
-  };
+    echo json_encode(array(
+     "message" => "Došlo je do pogreške kod učitavanja testova.",
+     "error" => $e->getMessage()
+    ));
+   };
   

@@ -15,9 +15,6 @@ include_once '../../models/cjepiva.php';
 
   try{
    $result = $oCjepiva->read();
-   $num = $result->rowCount();
-
-   //if($num >0){
     $cjepiva_arr = array();
     while($row = $result->fetch(PDO::FETCH_ASSOC)){
      extract($row);
@@ -28,12 +25,10 @@ include_once '../../models/cjepiva.php';
      array_push($cjepiva_arr, $cjepiva_item);
     }
     echo json_encode($cjepiva_arr);
-   //}else{
-    //echo json_encode(array(
-     //'message' => 'Cijepljeni nisu pronađeni'
-    //));
-   //}
   }catch(Exception $e){
-   echo json_encode(array('try_err'=> $e.getMessage()));
-  };
+    echo json_encode(array(
+     "message" => "Došlo je do pogreške kod učitavanja cjepiva.",
+     "error" => $e->getMessage()
+    ));
+   };
   

@@ -31,9 +31,6 @@
       'rezultat' => $oTest->rezultat,
    );
    echo json_encode($test_arr);
-   //}else{
-    //  echo json_encode(array('message' => 'Test sa zatrazenim identifikatorom ne postoji.'));
-  // }
  }catch(Exception $e){
   echo json_encode(array(
    "message" => "Došlo je do pogreške kod učitavanja podataka o testu.",

@@ -8,8 +8,6 @@ const useForm = (id, newValue, Success ) => {
     rezultat: '',
   })
 
-  const [errors, setErrors] = useState({})
-
   const handleChange = (e) => {
     const { name, value} = e.target
     setValues({
@@ -29,7 +27,6 @@ const useForm = (id, newValue, Success ) => {
         newValue.getMonth() + 1
       }/${newValue.getDate()}/${newValue.getFullYear()}`;
       var datumprikaz=formattedDate;
-      console.log(datumprikaz);
       var mjesec='';
       var dan='';
       var godina='';
@@ -71,8 +68,6 @@ const useForm = (id, newValue, Success ) => {
         var datumbaza=parseInt(datumprikazstring2);
       
       }
-  
-
 
     let requestOptions = {}
         requestOptions = {
@@ -94,15 +89,7 @@ const useForm = (id, newValue, Success ) => {
         .then((response) => response.json())
         .then((data) => {
           Success(data.message)
-          //window.location.reload()
         })
-        //.catch((error) => {
-         // console.log(
-           // 'There has been a problem with your fetch operation:',
-           // error
-         // )
-       // })
-    
   }
 
   return { handleChange, values, handleSubmit}

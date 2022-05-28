@@ -17,7 +17,6 @@ import {
   FormGroup,
   FormControlLabel,
 } from '@material-ui/core'
-import { StarRate } from '@mui/icons-material';
 import './testiranje.css'
 
 export default function TestiranjeEdit(props) {
@@ -100,7 +99,6 @@ export default function TestiranjeEdit(props) {
       setUpdate(update + 1)
     }
     
-    console.log(newValue);
   
     return (
       <>

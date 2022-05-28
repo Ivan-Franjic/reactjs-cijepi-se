@@ -14,7 +14,7 @@ include_once '../../models/testiranje.php';
   $oTestovi = new Testiranje($db);
 
   try{
-    $result = $oTestovi->read_testovi();
+   $result = $oTestovi->read_testovi();
    $testovi_arr = array();
    while($row = $result->fetch(PDO::FETCH_ASSOC)){
     extract($row);
@@ -34,10 +34,10 @@ include_once '../../models/testiranje.php';
     array_push($testovi_arr, $testovi_item);
   }
      
-     echo json_encode($testovi_arr);
-    }catch(Exception $e){
-     echo json_encode(array(
-      "message" => "Došlo je do pogreške kod učitavanja podataka o testu.",
-      "error" => $e->getMessage()
-     ));
-    };
+  echo json_encode($testovi_arr);
+  }catch(Exception $e){
+    echo json_encode(array(
+    "message" => "Došlo je do pogreške kod učitavanja podataka o testu.",
+    "error" => $e->getMessage()
+    ));
+  };

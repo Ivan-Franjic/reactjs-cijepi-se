@@ -25,7 +25,6 @@ export default function Na_cekanjuEdit(props) {
     const [na_cekanju, setNa_cekanju] = useState([])
     const [cjepiva, setCjepiva] = useState([])
     const [update, setUpdate] = useState(1)
-    const [disableSelect, setDisableSelect] = useState(false)
     const [newValue, setStartDate] = useState(new Date());
     const [newValue2, setStartDate2] = useState(new Date());
     const isWeekday = (date) => {
@@ -95,12 +94,6 @@ export default function Na_cekanjuEdit(props) {
     )
   
     const handleExistingValues = (data) => {
-      values.ime = data.ime
-      values.prezime = data.prezime
-      values.adresa = data.adresa
-      values.grad = data.grad
-      values.zupanija = data.zupanija
-      values.datum_rodenja = data.datum_rodenja
       values.vrsta_cjepiva = 1
       values.prva_doza_datum = data.prva_doza_datum
       values.prva_doza_status = data.prva_doza_status

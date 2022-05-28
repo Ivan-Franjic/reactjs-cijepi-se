@@ -15,9 +15,6 @@ include_once '../../models/cijepljenje.php';
 
   try{
    $result = $oNaruceni->read_naruceni();
-   $num = $result->rowCount();
-
-   //if($num >0){
     $narucen_arr = array();
     while($row = $result->fetch(PDO::FETCH_ASSOC)){
      extract($row);
@@ -38,10 +35,7 @@ include_once '../../models/cijepljenje.php';
 				$mjesec_2=substr($datum_baza_2, -4, 2);
 				$godina_2=substr($datum_baza_2, 0, -4);
 				$datum_prikaz_2=$dan_2.".".$mjesec_2.".".$godina_2.".";
-				$danasnji_datum=Date("Ymd");
-        $datum_razlika=($danasnji_datum-$datum_baza_rodenje);
-        $godina=substr($datum_razlika, 0, 2);
-        $god = (int)$godina;
+				
      $narucen_item = array(
       'ime' => html_entity_decode($ime),
       'prezime' => html_entity_decode($prezime),
@@ -50,7 +44,6 @@ include_once '../../models/cijepljenje.php';
       'zupanija' => $zupanija,
       'OIB' => $OIB,
       'datum_rodenja' => $datum_prikaz_rodenje,
-      'god' => $god,
       'vrsta_cjepiva' => $vrsta_cjepiva,
       'naziv_cjepiva' => html_entity_decode($naziv_cjepiva),
       'prva_doza_datum' => $datum_prikaz_1,
@@ -61,12 +54,10 @@ include_once '../../models/cijepljenje.php';
      array_push($narucen_arr, $narucen_item);
     }
     echo json_encode($narucen_arr);
-   //}else{
-    //echo json_encode(array(
-     //'message' => 'Cijepljeni nisu pronađeni'
-    //));
-   //}
   }catch(Exception $e){
-   echo json_encode(array('try_err'=> $e.getMessage()));
-  };
+    echo json_encode(array(
+     "message" => "Došlo je do pogreške kod učitavanja pacijenata.",
+     "error" => $e->getMessage()
+    ));
+   };
   
