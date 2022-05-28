@@ -17,7 +17,6 @@ class Pacijent
     public $zupanija="N/A";
     public $OIB="N/A";
     public $datum_rodenja="N/A";
-    public $god="N/A";
     public $vrsta_cjepiva="N/A";
     public $prva_doza_datum="N/A";
     public $prva_doza_status="N/A";
@@ -25,7 +24,7 @@ class Pacijent
     public $druga_doza_status="N/A";
     
 
-    public function __construct($ime=null,$prezime=null,$adresa=null,$grad=null,$zupanija=null,$OIB=null,$datum_rodenja=null,$god=null,$vrsta_cjepiva=null,$prva_doza_datum=null,$prva_doza_status=null,$druga_doza_datum=null,$druga_doza_status=null)
+    public function __construct($ime=null,$prezime=null,$adresa=null,$grad=null,$zupanija=null,$OIB=null,$datum_rodenja=null,$vrsta_cjepiva=null,$prva_doza_datum=null,$prva_doza_status=null,$druga_doza_datum=null,$druga_doza_status=null)
     {
         if($ime) $this->ime=$ime;
         if($prezime) $this->prezime=$prezime;
@@ -34,7 +33,6 @@ class Pacijent
         if($zupanija) $this->zupanija=$zupanija;
         if($OIB) $this->OIB=$OIB;
         if($datum_rodenja) $this->datum_rodenja=$datum_rodenja;
-        if($god) $this->god=$god;
         if($vrsta_cjepiva) $this->vrsta_cjepiva=$vrsta_cjepiva;
         if($prva_doza_datum) $this->prva_doza_datum=$prva_doza_datum;
         if($prva_doza_status) $this->prva_doza_status=$prva_doza_status;
@@ -77,12 +75,11 @@ class Testiranje
     public $zupanija="N/A";
     public $oib="N/A";
     public $datum_rodenja="N/A";
-    //public $god="N/A";
     public $test="N/A";
     public $datum="N/A";
     public $rezultat="Na čekanju";
 
-    public function __construct($id=null,$ime=null,$prezime=null,$adresa=null,$grad=null,$zupanija=null,$oib=null,$datum_rodenja=null,/*$god=null,*/$test=null,$datum=null,$rezultat=null)
+    public function __construct($id=null,$ime=null,$prezime=null,$adresa=null,$grad=null,$zupanija=null,$oib=null,$datum_rodenja=null,$test=null,$datum=null,$rezultat=null)
     {
         if($id) $this->id=$id;
         if($ime) $this->ime=$ime;
@@ -92,7 +89,6 @@ class Testiranje
         if($zupanija) $this->zupanija=$zupanija;
         if($oib) $this->oib=$oib;
         if($datum_rodenja) $this->datum_rodenja=$datum_rodenja;
-        //if($god) $this->god=$god;
         if($test) $this->test=$test;
         if($datum) $this->datum=$datum;
         if($rezultat) $this->rezultat=$rezultat;
@@ -108,9 +104,8 @@ class PovijestTestiranja
     public $zupanija="N/A";
     public $oib="N/A";
     public $datum_rodenja="N/A";
-    public $god="N/A";
 
-    public function __construct($ime=null,$prezime=null,$adresa=null,$grad=null,$zupanija=null,$oib=null,$datum_rodenja=null,$god=null)
+    public function __construct($ime=null,$prezime=null,$adresa=null,$grad=null,$zupanija=null,$oib=null,$datum_rodenja=null)
     {
         if($ime) $this->ime=$ime;
         if($prezime) $this->prezime=$prezime;
@@ -119,7 +114,6 @@ class PovijestTestiranja
         if($zupanija) $this->zupanija=$zupanija;
         if($oib) $this->oib=$oib;
         if($datum_rodenja) $this->datum_rodenja=$datum_rodenja;
-        if($god) $this->god=$god;
     }
 }
 
