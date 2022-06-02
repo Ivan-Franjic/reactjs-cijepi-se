@@ -32,3 +32,21 @@ li {
   border-left: 4px solid #1E90FF;
   cursor: pointer;
 }
+
+.footer {
+  display:flex;
+  background-color: #2b2b2b;
+  position: fixed;
+  margin-left: 250px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 40px;
+}
+
+.footer-text {
+  color: white;
+  margin:  auto;
+  position: relative;
+  text-align: justify;
+}

@@ -16,6 +16,7 @@
     max-width: calc(100% - 270px);
     min-width: 500px;
   }
+
   .naslov {
     margin-top: 30px;
     margin-bottom: 30px;
@@ -41,5 +42,10 @@
     text-align: center !important;
     box-shadow: 0 6px 20px -5px rgba(0,0,0,0.4) !important;
     background: lightgray;
+  }
+  
+  .icon2{
+    float: right !important; 
+    color: #1E90FF !important;
   }
   

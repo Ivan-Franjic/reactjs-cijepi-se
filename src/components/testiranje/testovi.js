@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
+import FormHelperText from '@material-ui/core/FormHelperText'
 import SearchBar from 'material-ui-search-bar';
 import { useLocation } from 'react-router-dom';
 import {
@@ -172,6 +173,7 @@ const useStyles = makeStyles({
 
     return (
         <>
+          <FormHelperText className='naslovt'>Testovi</FormHelperText>
           <TableContainer className="table-testiranje" component={Paper}>
           {rows && (
                 <>
@@ -203,7 +205,7 @@ const useStyles = makeStyles({
                     {location.state === row.OIB ? (
                       <>
                     <TableCell component='th' scope='row'>
-                      {index+1}
+                      {index+1}.
                     </TableCell>
                     <TableCell align='right'>{row.test}</TableCell>
                     <TableCell align='right'>{row.datum}</TableCell>

@@ -274,7 +274,7 @@ const useStyles = makeStyles({
                 ).map((row, index) => (
                   <TableRow key={row.OIB}>
                     <TableCell component='th' scope='row'>
-                      {index+1}
+                      {index+1}.
                     </TableCell>
                     <TableCell align='right'>{row.ime}</TableCell>
                     <TableCell align='right'>{row.prezime}</TableCell>
@@ -296,7 +296,7 @@ const useStyles = makeStyles({
                       ).map((row, index) => (
                   <TableRow key={row.OIB}>
                     <TableCell component='th' scope='row'>
-                      {index+1}
+                      {index+1}.
                     </TableCell>
                     <TableCell align='right'>{row.ime}</TableCell>
                     <TableCell align='right'>{row.prezime}</TableCell>

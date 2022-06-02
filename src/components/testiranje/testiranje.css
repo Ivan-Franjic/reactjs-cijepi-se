@@ -37,6 +37,20 @@
     color:#2f2f2f!important;
   }
 
+  .naslovt {
+    margin-top: 50px !important;
+    margin-left: 270px !important;
+    margin-bottom: 10px !important;
+    max-width: calc(100% - 270px) !important;
+    min-width: 500px !important;
+    font-family: "Trebuchet MS", sans-serif !important;
+    font-size: 30px !important;
+    letter-spacing: 2px !important;
+    border-bottom: 2px solid black !important;
+    text-transform: uppercase !important;
+    color:#2f2f2f !important;
+  }
+
   .selectt {
     padding: 5px !important;
     border: none !important;

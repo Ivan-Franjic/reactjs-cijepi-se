@@ -17,6 +17,14 @@
     min-width: 500px;
   }
 
+  .naslov {
+    position:relative;
+    top:-70px;
+    right:70px;
+    font-size: 20px !important;
+    color:#2f2f2f!important;
+  }
+
   .form_na_cekanju {
     position: fixed; /* or absolute */
     top: 30%;
@@ -27,14 +35,6 @@
     padding: 100px;
     width: 600px !important;
     height: 100px !important;
-  }
-
-  .naslov {
-    position:relative;
-    top:-70px;
-    right:70px;
-    font-size: 20px !important;
-    color:#2f2f2f!important;
   }
 
   .selectnc {
@@ -118,4 +118,8 @@
 
   .helperText{
     color: red !important;
+  }
+
+  .icon{
+    color: #1E90FF !important;
   }

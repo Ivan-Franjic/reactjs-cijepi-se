@@ -1,6 +1,7 @@
 import './App.css';
 import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import Sidebar from './Sidebar/sidebar'
+import Footer from './Sidebar/footer'
 import Na_cekanju from './components/cijepljenje/na_cekanju';
 import Na_cekanjuEdit from './components/cijepljenje/na_cekanjuEdit';
 import Naruceni from './components/cijepljenje/naruceni';
@@ -28,8 +29,8 @@ function App() {
             <Route path='/testiranje/azuriraj/id/:id' element={<TestiranjeEdit />}/>
             <Route path="/povijest_testiranja" element={<Povijest />} />
             <Route path="/testovi" element={<Testovi />} />
-
           </Routes>
+        <Footer />
         </BrowserRouter>
     </div>
   )

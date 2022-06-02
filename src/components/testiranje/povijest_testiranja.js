@@ -276,7 +276,7 @@ const useStyles = makeStyles({
                 ).map((row, index) => (
                   <TableRow key={row.id}>
                     <TableCell component='th' scope='row'>
-                      {index+1}
+                      {index+1}.
                     </TableCell>
                     <TableCell align='right'>{row.ime}</TableCell>
                     <TableCell align='right'>{row.prezime}</TableCell>
@@ -287,7 +287,7 @@ const useStyles = makeStyles({
                     <TableCell align='right'>{row.datum_rodenja}</TableCell>
                     <TableCell>
                       <Link to={'/testovi'} state={row.OIB}>
-                        <IconButton collor='primary'>
+                        <IconButton className='icon2' collor='primary'>
                         <FaIcons.FaRegClipboard />
                         </IconButton>
                       </Link>
@@ -303,7 +303,7 @@ const useStyles = makeStyles({
                       ).map((row, index) => (
                   <TableRow key={row.id}>
                     <TableCell component='th' scope='row'>
-                      {index+1}
+                      {index+1}.
                     </TableCell>
                     <TableCell align='right'>{row.ime}</TableCell>
                     <TableCell align='right'>{row.prezime}</TableCell>
@@ -314,7 +314,7 @@ const useStyles = makeStyles({
                     <TableCell align='right'>{row.datum_rodenja}</TableCell>
                     <TableCell>
                       <Link to={'/povijest_testiranja/testovi/OIB/' + row.OIB}>
-                        <IconButton collor='primary'>
+                        <IconButton className='icon2' collor='primary'>
                           <EditIcon />
                         </IconButton>
                       </Link>

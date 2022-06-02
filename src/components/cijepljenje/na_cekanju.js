@@ -277,7 +277,7 @@ const useStyles = makeStyles({
                 ).map((row, index) => (
                   <TableRow key={row.OIB}>
                   <TableCell component='th' scope='row'>
-                    {index+1}
+                    {index+1}.
                   </TableCell>
                   <TableCell align='right'>{row.ime}</TableCell>
                   <TableCell align='right'>{row.prezime}</TableCell>
@@ -288,7 +288,7 @@ const useStyles = makeStyles({
                   <TableCell align='right'>{row.datum_rodenja}</TableCell>
                   <TableCell>
                     <Link to={'/na_cekanju/azuriraj/OIB/' + row.OIB}>
-                      <IconButton collor='primary'>
+                      <IconButton className='icon' collor='primary'>
                       <FaCalendar />
                       </IconButton>
                     </Link>
@@ -315,7 +315,7 @@ const useStyles = makeStyles({
                     <TableCell align='right'>{row.datum_rodenja}</TableCell>
                     <TableCell>
                       <Link to={'/na_cekanju/azuriraj/OIB/' + row.OIB}>
-                        <IconButton collor='primary'>
+                        <IconButton className='icon' collor='primary'>
                         <FaCalendar />
                         </IconButton>
                       </Link>
