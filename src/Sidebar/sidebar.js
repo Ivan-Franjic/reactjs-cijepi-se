@@ -13,6 +13,7 @@ const SidebarNav = styled.nav`
   width: 250px;
   height: 100vh;
   display: flex;
+  overflow-y: auto;
   justify-content: center;
   position: fixed;
   top: 0;
