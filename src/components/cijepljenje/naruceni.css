@@ -13,6 +13,7 @@
   .table-naruceni {
     margin-top: 50px;
     margin-left: 270px;
+    margin-bottom: 50px;
     max-width: calc(100% - 270px);
     min-width: 500px;
   }
@@ -115,4 +116,3 @@
     top:-400px;
     right:150px;
   }
-  
