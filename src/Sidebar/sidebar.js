@@ -5,6 +5,7 @@ import * as FaIcons from 'react-icons/fa'
 import { FaSyringe } from "react-icons/fa";
 import { FaFolder } from "react-icons/fa";
 import { ImLab } from "react-icons/im";
+import { Button } from '@material-ui/core'
 
 import './sidebar.css'
 
@@ -36,11 +37,29 @@ const Sidebar = (props) => {
         <SidebarNav sidebar={sidebar}>
           <SidebarWrap>
             <div className='nav-header'>Cijepi se</div>
-            <li><NavLink className='link' activeClassName="active" to="/"><FaIcons.FaHourglassHalf/>ㅤNa čekanju</NavLink></li>
-            <li><NavLink className='link' activeClassName="active" to="/naruceni"><FaIcons.FaRegClipboard/>ㅤNaručeni</NavLink></li>
-            <li><NavLink className='link' activeClassName="active" to="/cijepljeni"><FaSyringe/>ㅤCijepljeni</NavLink></li>
-            <li><NavLink className='link' activeClassName="active" to="/testiranje"><ImLab/>ㅤTestiranje</NavLink></li>
-            <li><NavLink className='link' activeClassName="active" to="/povijest_testiranja"><FaFolder/>ㅤPovijest testiranja</NavLink></li>
+            {props.user.uloga == 'doktor'
+              ? <><li><NavLink className='link' activeClassName="active" to="/"><FaIcons.FaHourglassHalf/>ㅤNa čekanju</NavLink></li>
+              <li><NavLink className='link' activeClassName="active" to="/booked"><FaIcons.FaRegClipboard/>ㅤNaručeni</NavLink></li>
+              <li><NavLink className='link' activeClassName="active" to="/vaccinated"><FaSyringe/>ㅤCijepljeni</NavLink></li>
+              <li><NavLink className='link' activeClassName="active" to="/testing"><ImLab/>ㅤTestiranje</NavLink></li>
+              <li><NavLink className='link' activeClassName="active" to="/testing_history"><FaFolder/>ㅤPovijest testiranja</NavLink></li></>
+              : <>
+              <li><NavLink className='link' activeClassName="active" to="/status"><FaIcons.FaHourglassHalf/>ㅤStatus</NavLink></li>
+              <li><NavLink className='link' activeClassName="active" to="/testing"><ImLab/>ㅤTestiranje</NavLink></li>
+              <li><NavLink className='link' activeClassName="active" to="/testing_history"><FaFolder/>ㅤPovijest testiranja</NavLink></li></>
+              }
+            {props.user !== null ? (
+              <Button
+                className='sidebarBtn'
+                color='primary'
+                variant='contained'
+                onClick={props.logOut}
+              >
+                Odjava
+              </Button>
+            ) : (
+              ''
+            )}
           </SidebarWrap>
         </SidebarNav>
     </>

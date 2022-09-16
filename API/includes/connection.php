@@ -1,10 +1,10 @@
 <?php
     class Database  
 				{
-                    private $host = '193.198.57.183';
-					private $dbname = 'STUDENTI_PIN';
-					private $username = 'pin';
-					private $password = 'Vsmti1234!';
+                    private $host = 'localhost:3306';
+					private $dbname = 'cijepi_se';
+					private $username = 'root';
+					private $password = '';
 					private $conn;
 					
 					public function connect(){
@@ -12,7 +12,7 @@
 
 					try
 					{
-						$this->conn = new PDO('sqlsrv:Server='.$this->host.';Database='.$this->dbname, $this->username, $this->password);
+						$this->conn = new PDO('mysql:host='.$this->host.';dbname='.$this->dbname.';charset=utf8', $this->username, $this->password);
 					}
 					catch (PDOException $e)
 					{

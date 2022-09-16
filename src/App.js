@@ -1,40 +1,55 @@
 import './App.css';
+import {useContext} from 'react'
 import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import Sidebar from './Sidebar/sidebar'
 import Footer from './Sidebar/footer'
-import Na_cekanju from './components/cijepljenje/na_cekanju';
-import Na_cekanjuEdit from './components/cijepljenje/na_cekanjuEdit';
-import Naruceni from './components/cijepljenje/naruceni';
-import NaruceniEdit from './components/cijepljenje/naruceniEdit';
-import Cijepljeni from './components/cijepljenje/cijepljeni';
-import Testiranje from './components/testiranje/testiranje';
-import TestiranjeEdit from './components/testiranje/testiranjeEdit';
-import Povijest from './components/testiranje/povijest_testiranja';
-import Testovi from './components/testiranje/testovi';
+import {UserContext} from './UserContext';
+import Login from './components/login';
+import Register from './components/register';
+import On_hold from './components/vaccination/on_hold';
+import On_holdEdit from './components/vaccination/on_holdEdit';
+import Booked from './components/vaccination/booked';
+import BookedEdit from './components/vaccination/bookedEdit';
+import Vaccinated from './components/vaccination/vaccinated';
+import Testing from './components/testing/testing';
+import TestingEdit from './components/testing/testingEdit';
+import History from './components/testing/testing_history';
+import Tests from './components/testing/tests';
+import Status from './components/status';
 
 
 function App() {
 
+  const {user} = useContext(UserContext);
+  const {logout} = useContext(UserContext);
+
   return (
     <div className="container">
         <BrowserRouter>
-        <Sidebar />
-          <Routes>
-            <Route path="/" element={<Na_cekanju />} />
-            <Route path='/na_cekanju/azuriraj/OIB/:OIB' element={<Na_cekanjuEdit />}/>
-            <Route path="/naruceni" element={<Naruceni />} />
-            <Route path='/naruceni/azuriraj/OIB/:OIB' element={<NaruceniEdit />}/>
-            <Route path="/cijepljeni" element={<Cijepljeni />} />
-            <Route path="/testiranje" element={<Testiranje />} />
-            <Route path='/testiranje/azuriraj/id/:id' element={<TestiranjeEdit />}/>
-            <Route path="/povijest_testiranja" element={<Povijest />} />
-            <Route path="/testovi" element={<Testovi />} />
+        { user && <Sidebar user={user} logOut={logout} />}
+        <Routes>
+        { user &&  <Route path="/" element={<On_hold user={user}/>} /> }
+            {!user && (
+              
+              <>
+              <Route path="/login" element={<Login/>} />
+              <Route path="/signup" element={<Register/>} />
+              </>
+              )}
+            <Route path="*" element={<Navigate to={user ? '/':'/login'} />} />
+            <Route path='/on_hold/update/oib/:oib' element={<On_holdEdit user={user}/>}/>
+            <Route path="/booked" element={<Booked user={user}/>} />
+            <Route path='/booked/update/oib/:oib' element={<BookedEdit user={user}/>}/>
+            <Route path="/vaccinated" element={<Vaccinated user={user}/>} />
+            <Route path="/testing" element={<Testing user={user}/>} />
+            <Route path='/testing/update/id/:id' element={<TestingEdit user={user}/>}/>
+            <Route path="/testing_history" element={<History user={user}/>} />
+            <Route path="/tests" element={<Tests user={user}/>} />
+            <Route path="/status" element={<Status user={user}/>} />
           </Routes>
-        <Footer />
         </BrowserRouter>
     </div>
   )
 }
 
 export default App;
-            
