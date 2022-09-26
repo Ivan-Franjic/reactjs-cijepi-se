@@ -70,7 +70,7 @@ const useStyles = makeStyles({
                 {props.user.oib === row.oib ? (
                   <>
                   <p>Ime i prezime: {row.ime} {row.prezime}</p>
-                  <p>Datum rodenja: {row.datum_rodenja}</p>
+                  <p>Datum rođenja: {row.datum_rodenja}</p>
                   <p>Email: {props.user.email}</p>
                   <p>Adresa: {row.adresa}, {row.grad}</p>
                   </>
