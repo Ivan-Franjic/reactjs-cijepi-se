@@ -50,3 +50,8 @@ li {
   position: relative;
   text-align: justify;
 }
+
+.sidebarBtn{
+  margin-top: 20px !important;
+  margin-left: 90px !important;
+}

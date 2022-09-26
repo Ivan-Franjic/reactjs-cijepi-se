@@ -1,35 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import PropTypes from 'prop-types'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
-import Select from '@material-ui/core/Select'
-import MenuItem from '@material-ui/core/MenuItem'
-import FormHelperText from '@material-ui/core/FormHelperText'
-import InputLabel from '@material-ui/core/InputLabel'
-import FormControl from '@material-ui/core/FormControl'
 import { Link } from 'react-router-dom'
-import SearchBar from 'material-ui-search-bar';
-import { FaCalendar, FaPencilAlt } from "react-icons/fa";
-import {
-  Delete,
-  Visibility,
-  Edit,
-  FirstPage,
-  LastPage,
-  KeyboardArrowLeft,
-  KeyboardArrowRight,
-} from '@material-ui/icons';
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  IconButton,
-  Paper,
-  TableFooter,
-  TablePagination,
-} from '@material-ui/core';
+import { FaPencilAlt } from "react-icons/fa";
+import { IconButton } from '@material-ui/core';
 import './profile.css'
 import profilePic from '../profile.jpg';
 
@@ -51,7 +24,6 @@ const useStyles = makeStyles({
   }));
 
   const Status = (props) => {
-    const [isSelectActive, setIsSelectActive] = useState(false)
     const [status, setStatus] = useState([])
   
     const myHeaders = new Headers();

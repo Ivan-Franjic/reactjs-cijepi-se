@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { NavLink, Link } from 'react-router-dom'
 import * as FaIcons from 'react-icons/fa'
-import { FaSyringe } from "react-icons/fa";
-import { FaFolder } from "react-icons/fa";
+import { FaSyringe, FaFolder } from "react-icons/fa";
+import { BiLogOut } from "react-icons/bi";
 import { ImLab } from "react-icons/im";
-import { Button } from '@material-ui/core'
+import { IconButton } from '@material-ui/core'
 
 import './sidebar.css'
 
@@ -44,19 +44,19 @@ const Sidebar = (props) => {
               <li><NavLink className='link' activeClassName="active" to="/testing"><ImLab/>ㅤTestiranje</NavLink></li>
               <li><NavLink className='link' activeClassName="active" to="/testing_history"><FaFolder/>ㅤPovijest testiranja</NavLink></li></>
               : <>
-              <li><NavLink className='link' activeClassName="active" to="/profile"><FaIcons.FaHourglassHalf/>ㅤProfil</NavLink></li>
+              <li><NavLink className='link' activeClassName="active" to="/profile"><FaIcons.FaUser/>ㅤProfil</NavLink></li>
               <li><NavLink className='link' activeClassName="active" to="/testing_patient"><ImLab/>ㅤTestiranje</NavLink></li>
              </>
               }
             {props.user !== null ? (
-              <Button
+              <IconButton
                 className='sidebarBtn'
                 color='primary'
-                variant='contained'
                 onClick={props.logOut}
               >
-                Odjava
-              </Button>
+                <BiLogOut/>
+                </IconButton>
+             
             ) : (
               ''
             )}

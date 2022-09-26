@@ -88,7 +88,6 @@ const useForm = (newValue, props, Success) => {
         .then((response) => response.json())
         .then((data) => {
           Success(data.message)
-          //window.location.reload()
         })
       
         

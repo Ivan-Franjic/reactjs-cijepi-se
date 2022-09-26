@@ -10,9 +10,6 @@ import { Link } from 'react-router-dom'
 import SearchBar from 'material-ui-search-bar';
 import { FaCalendar } from "react-icons/fa";
 import {
-  Delete,
-  Visibility,
-  Edit,
   FirstPage,
   LastPage,
   KeyboardArrowLeft,

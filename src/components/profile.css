@@ -20,15 +20,15 @@
   }
 
   .form_edit_profile{
-    position: fixed; /* or absolute */
-    top: 30%;
-    left: 32%;
+    position: fixed;
+    top: 25%;
+    left: 30%;
   }
 
   .editContainerp {
     padding: 100px;
     width: 700px !important;
-    height: 300px !important;
+    height: 250px !important;
   }
   
   .naslov {
@@ -37,5 +37,44 @@
     right:70px;
     font-size: 20px !important;
     color:#2f2f2f!important;
+  }
+
+  .inputp{
+    width: 150px !important;
+    height: 40px !important;
+    border: none !important;
+    outline: none !important;
+    background: green !important;
+    color: #fff !important;
+    font-size: 15px !important;
+    border-radius: 40px !important;
+    text-align: center !important;
+    box-shadow: 0 6px 20px -5px rgba(0,0,0,0.4) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    cursor: pointer !important;
+    position:relative;
+    top:143px;
+    left:-180px;
+  }
+
+  .inputop{
+    width: 150px !important;
+    height: 40px !important;
+    margin-left: 20px !important;
+    border: none !important;
+    outline: none !important;
+    background: #2f2f2f !important;
+    color: #fff !important;
+    font-size: 15px !important;
+    border-radius: 40px !important;
+    text-align: center !important;
+    box-shadow: 0 6px 20px -5px rgba(0,0,0,0.4) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    cursor: pointer !important;
+    position:relative;
+    top:40px;
+    right:-550px;
   }
   

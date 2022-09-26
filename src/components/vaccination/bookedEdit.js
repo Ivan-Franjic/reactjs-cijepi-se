@@ -9,15 +9,8 @@ import { Link, useParams } from 'react-router-dom'
 import {
   Paper,
   Grid,
-  TextField,
   FormHelperText,
   Button,
-  FormControl,
-  Select,
-  InputLabel,
-  MenuItem,
-  Checkbox,
-  FormGroup,
   FormControlLabel,
 } from '@material-ui/core'
 import './booked.css'

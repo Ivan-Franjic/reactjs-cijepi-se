@@ -5,11 +5,8 @@ import FormHelperText from '@material-ui/core/FormHelperText'
 import { Link } from 'react-router-dom'
 import SearchBar from 'material-ui-search-bar';
 import { useLocation } from 'react-router-dom';
-import { FaCalendar, FaPencilAlt } from "react-icons/fa";
+import { FaClipboard } from "react-icons/fa";
 import {
-  Delete,
-  Visibility,
-  Edit,
   FirstPage,
   LastPage,
   KeyboardArrowLeft,
@@ -177,7 +174,7 @@ const useStyles = makeStyles({
         <>
           <FormHelperText className='naslovt'>Testovi<Link to={'/testing_patient/add/oib/' + props.user.oib}>
                         <IconButton className='icon' collor='primary'>
-                        <FaPencilAlt />
+                        <FaClipboard />
                         </IconButton>
                       </Link></FormHelperText>
           

@@ -27,7 +27,7 @@
 }
 
 .form_na_cekanju {
-  position: fixed; /* or absolute */
+  position: fixed;
   top: 30%;
   left: 32%;
 }

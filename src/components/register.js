@@ -44,18 +44,6 @@ const Register = () => {
     const submitForm = async (e) => {
         e.preventDefault();
 
-        //if(formData.ime.trim() === '' || formData.prezime.trim() === '' || formData.email.trim() === '' || formData.lozinka.trim() === ''){
-            //setSuccessMsg(false);
-            //setErrMsg('Molimo popunite sva polja!');
-            //return;
-        //}
-
-        //if(!Object.values(formData).every(val => val.trim() !== '')){
-            //setSuccessMsg(false);
-            //setErrMsg('Molimo popunite sva polja!');
-            //return;
-        //}
-
         const data = await registerUser(formData);
         if(data.success){
             e.target.reset();

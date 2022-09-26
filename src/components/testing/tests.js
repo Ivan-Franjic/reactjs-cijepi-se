@@ -5,9 +5,6 @@ import FormHelperText from '@material-ui/core/FormHelperText'
 import SearchBar from 'material-ui-search-bar';
 import { useLocation } from 'react-router-dom';
 import {
-  Delete,
-  Visibility,
-  Edit,
   FirstPage,
   LastPage,
   KeyboardArrowLeft,

@@ -9,7 +9,7 @@ const useForm = (id, newValue, Success ) => {
   })
 
   const handleChange = (e) => {
-    const { name, value} = e.target
+    const { name, value } = e.target
     setValues({
       ...values,
       [name]: value,

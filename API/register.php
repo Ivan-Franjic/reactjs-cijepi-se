@@ -26,30 +26,6 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") :
 
     $returnData = msg(0, 404, 'Page Not Found!');
 
-/*elseif (
-    !isset($data->ime)
-    || !isset($data->prezime)
-    || !isset($data->adresa)
-    || !isset($data->grad)
-    || !isset($data->zupanija)
-    || !isset($data->oib)
-    || !isset($data->email)
-    || !isset($data->lozinka)
-    || !isset($data->punkt)
-    || empty(trim($data->ime))
-    || empty(trim($data->prezime))
-    || empty(trim($data->adresa))
-    || empty(trim($data->grad))
-    || empty(trim($data->zupanija))
-    || empty(trim($data->oib))
-    || empty(trim($data->email))
-    || empty(trim($data->lozinka))
-    || empty(trim($data->punkt))
-) :
-
-    $fields = ['fields' => ['ime', 'prezime' , 'adresa' , 'grad' , 'zupanija', 'oib', 'email', 'lozinka', 'punkt']];
-    $returnData = msg(0, 422, 'Molimo popunite sva polja!', $fields);*/
-
 // IF THERE ARE NO EMPTY FIELDS THEN-
 else :
 

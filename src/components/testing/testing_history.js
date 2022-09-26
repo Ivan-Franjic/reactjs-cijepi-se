@@ -11,9 +11,6 @@ import SearchBar from 'material-ui-search-bar';
 import EditIcon from '@mui/icons-material/Edit';
 import * as FaIcons from 'react-icons/fa'
 import {
-  Delete,
-  Visibility,
-  Edit,
   FirstPage,
   LastPage,
   KeyboardArrowLeft,

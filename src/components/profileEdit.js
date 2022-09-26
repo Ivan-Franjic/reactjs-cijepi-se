@@ -11,11 +11,7 @@ import {
   Button,
   FormControl,
   Select,
-  InputLabel,
   MenuItem,
-  Checkbox,
-  FormGroup,
-  FormControlLabel,
 } from '@material-ui/core'
 import './profile.css'
 
@@ -103,19 +99,19 @@ export default function ProfileEdit(props) {
       <>
           <Grid item xs className='form_edit_profile'>
             <Paper className='editContainerp' elevation={10}>
-            <FormHelperText className='naslov'>Azuriraj podatke</FormHelperText>
+            <FormHelperText className='naslov'>Ažuriraj podatke</FormHelperText>
               <form onSubmit={handleSubmit}>
               
                 <Grid className='gridClass' container spacing={3}>
               
                 <Grid item xs>
-                  <label>Ime
-                  <input type="text" id="ime" name="ime" defaultValue={values.ime} onChange={handleChange} variant="outlined" required   />
-                  </label>
-                  <label>Prezime
-                  <input type="text" id="prezime" name="prezime" defaultValue={values.prezime} onChange={handleChange}  variant="outlined" required  />
-                  </label>
+                <FormHelperText >Ime</FormHelperText>
+                  <TextField id="imep" name="ime" value={values.ime} onChange={handleChange} variant="outlined" required   />
                   
+                  </Grid>
+                  <Grid item xs>
+                  <FormHelperText >Prezime</FormHelperText>
+                  <TextField id="prezimep" name="prezime" value={values.prezime} onChange={handleChange}  variant="outlined" required  />
                   </Grid>
             
                   <Grid item xs>
@@ -128,12 +124,12 @@ export default function ProfileEdit(props) {
 
                   <Grid item xs>
                   <FormHelperText >Adresa</FormHelperText>
-                  <input type="text" id="adresa" name="adresa" defaultValue={values.adresa} onChange={handleChange} variant="outlined" required  />
+                  <TextField id="adresap" name="adresa" value={values.adresa} onChange={handleChange} variant="outlined" required  />
                   </Grid>
 
                   <Grid item xs>
                   <FormHelperText >Grad</FormHelperText>
-                  <input type="text" id="grad" name="grad" defaultValue={values.grad} onChange={handleChange} variant="outlined" required />
+                  <TextField id="gradp" name="grad" value={values.grad} onChange={handleChange} variant="outlined" required />
                   </Grid>
 
                   <Grid item xs>
@@ -179,14 +175,12 @@ export default function ProfileEdit(props) {
                       </>
                   </Grid>
                   
-                  
-                
                   <Link id='redirect' to='/' />
                   <Button
                     id='submitButton'
                     type='submit'
                     color='primary'
-                    className='inputnc'
+                    className='inputp'
                   >
                     Spremi
                   </Button>
@@ -194,7 +188,7 @@ export default function ProfileEdit(props) {
                     id='cancelButton'
                     type='submit'
                     color='primary'
-                    className='inputonc'
+                    className='inputop'
                     onClick={Cancel}
                   >
                     Odustani

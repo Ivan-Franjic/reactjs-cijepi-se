@@ -6,23 +6,17 @@ import { Link, useParams } from 'react-router-dom'
 import {
   Paper,
   Grid,
-  TextField,
   FormHelperText,
   Button,
   FormControl,
   Select,
-  InputLabel,
   MenuItem,
-  Checkbox,
-  FormGroup,
-  FormControlLabel,
 } from '@material-ui/core'
 import './testing.css'
 
 export default function Testing_patientAdd(props) {
     const { id } = useParams()
     const [successMessage, setSuccessMessage] = useState('')
-    const [update, setUpdate] = useState(1)
     const [newValue, setStartDate] = useState(new Date());
     const isWeekday = (date) => {
       const day = date.getDay()
@@ -50,12 +44,13 @@ export default function Testing_patientAdd(props) {
         { value: 2, label: 'Brzi' }
       ]
 
-    const { handleChange, handleSubmit} = useForm(
+    const { handleChange, values, handleSubmit} = useForm(
       newValue,
       props,
       Success
 
     )
+    values.test="PCR"
 
     return (
       <>
@@ -79,7 +74,7 @@ export default function Testing_patientAdd(props) {
                           <Select className='select_test'
                             labelId='labelTest'
                             name='test'
-                            value='PCR'
+                            value={values.test}
                             onChange={handleChange}
                           >
                             

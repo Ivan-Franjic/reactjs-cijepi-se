@@ -72,8 +72,6 @@ else:
                     $token = $jwt->jwtEncodeData(
                         'http://localhost/vuv-cijepi-se/API/',
                         array("user_id"=> $row['id'],
-                       // "name"=> $row['ime'],
-                        //"surname"=> $row['prezime'],
                         "oib"=> $row['oib']
                         )
                     );
