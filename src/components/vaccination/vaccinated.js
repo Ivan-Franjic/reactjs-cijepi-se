@@ -272,7 +272,9 @@ const useStyles = makeStyles({
                     )
                   : rows
                 ).map((row, index) => (
-                  <TableRow key={row.OIB}>
+                  <TableRow key={row.oib}>
+                    {props.user.punkt_cijepljenja === row.punkt_cijepljenja ? (
+                      <>
                     <TableCell component='th' scope='row'>
                       {index+1}.
                     </TableCell>
@@ -281,10 +283,14 @@ const useStyles = makeStyles({
                     <TableCell align='right'>{row.adresa}</TableCell>
                     <TableCell align='right'>{row.grad}</TableCell>
                     <TableCell align='right'>{row.zupanija}</TableCell>
-                    <TableCell align='right'>{row.OIB}</TableCell>
+                    <TableCell align='right'>{row.oib}</TableCell>
                     <TableCell align='right'>{row.datum_rodenja}</TableCell>
                     <TableCell align='right'>{row.naziv_cjepiva}</TableCell>
                     <TableCell align='right'>{row.druga_doza_datum}</TableCell>
+                    </>
+                    ) :(
+                      ''
+                      )}
                   </TableRow>
                   ))
               :(rowsPerPage > 0
@@ -294,7 +300,9 @@ const useStyles = makeStyles({
                           )
                         : c
                       ).map((row, index) => (
-                  <TableRow key={row.OIB}>
+                        <TableRow key={row.oib}>
+                        {props.user.punkt_cijepljenja === row.punkt_cijepljenja ? (
+                          <>
                     <TableCell component='th' scope='row'>
                       {index+1}.
                     </TableCell>
@@ -303,10 +311,14 @@ const useStyles = makeStyles({
                     <TableCell align='right'>{row.adresa}</TableCell>
                     <TableCell align='right'>{row.grad}</TableCell>
                     <TableCell align='right'>{row.zupanija}</TableCell>
-                    <TableCell align='right'>{row.OIB}</TableCell>
+                    <TableCell align='right'>{row.oib}</TableCell>
                     <TableCell align='right'>{row.datum_rodenja}</TableCell>
                     <TableCell align='right'>{row.naziv_cjepiva}</TableCell>
                     <TableCell align='right'>{row.druga_doza_datum}</TableCell>
+                    </>
+                    ) :(
+                      ''
+                      )}
                   </TableRow>
                 ))}
               </TableBody>

@@ -106,6 +106,43 @@
     right:-500px;
   }
 
+  .inputtp {
+    width: 150px !important;
+    height: 40px !important;
+    border: none !important;
+    outline: none !important;
+    background: green !important;
+    color: #fff !important;
+    font-size: 15px !important;
+    border-radius: 40px !important;
+    text-align: center !important;
+    box-shadow: 0 6px 20px -5px rgba(0,0,0,0.4) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    cursor: pointer !important;
+    position:relative;
+    top:123px;
+    right:30px;
+  }
+
+  .inputotp{
+    width: 150px !important;
+    height: 40px !important;
+    border: none !important;
+    outline: none !important;
+    background: #2f2f2f !important;
+    color: #fff !important;
+    font-size: 15px !important;
+    border-radius: 40px !important;
+    text-align: center !important;
+    box-shadow: 0 6px 20px -5px rgba(0,0,0,0.4) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    cursor: pointer !important;
+    position:relative;
+    top:123px;
+  }
+
   .successTextt{
     width: 300px !important;
     height: 40px !important;

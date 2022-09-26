@@ -284,6 +284,8 @@ const useStyles = makeStyles({
                   : rows
                 ).map((row, index) => (
                   <TableRow key={row.oib}>
+                    {props.user.punkt_cijepljenja === row.punkt_cijepljenja ? (
+                      <>
                     <TableCell component='th' scope='row'>
                       {index+1}.
                     </TableCell>
@@ -306,6 +308,10 @@ const useStyles = makeStyles({
                         </IconButton>
                       </Link>
                     </TableCell>
+                    </>
+                    ) :(
+                      ''
+                      )}
                   </TableRow>
                   ))
               :(rowsPerPage > 0
@@ -315,7 +321,9 @@ const useStyles = makeStyles({
                           )
                         : n
                       ).map((row, index) => (
-                  <TableRow key={row.oib}>
+                      <TableRow key={row.oib}>
+                      {props.user.punkt_cijepljenja === row.punkt_cijepljenja ? (
+                      <>
                     <TableCell component='th' scope='row'>
                       {index+1}.
                     </TableCell>
@@ -338,6 +346,10 @@ const useStyles = makeStyles({
                         </IconButton>
                       </Link>
                     </TableCell>
+                    </>
+                    ) :(
+                      ''
+                      )}
                   </TableRow>
                 ))}
               </TableBody>

@@ -31,7 +31,8 @@ include_once '../../models/testing.php';
       'grad' => $grad,
       'zupanija' => $zupanija,
       'oib' => $oib,
-      'datum_rodenja' => $datum_prikaz_rodenje
+      'datum_rodenja' => $datum_prikaz_rodenje,
+      'punkt_cijepljenja' => $punkt_cijepljenja,
      );
      array_push($testiranp_arr, $testiranp_item);
     }

@@ -87,7 +87,7 @@
 
    public function read_booked(){
  
-    $query = "SELECT cij.oib, pac.ime, pac.prezime, pac.adresa, pac.grad, pac.zupanija, pac.datum_rodenja, cij.prva_doza_datum, cij.prva_doza_status, cij.druga_doza_datum, cij.druga_doza_status, cij.vrsta_cjepiva, c.naziv_cjepiva FROM cijepljenje cij LEFT JOIN pacijenti pac ON cij.oib = pac.oib LEFT JOIN cjepiva c ON cij.vrsta_cjepiva = c.id  WHERE cij.druga_doza_status<>'Cijepljen'";
+    $query = "SELECT cij.oib, pac.ime, pac.prezime, pac.adresa, pac.grad, pac.zupanija, pac.datum_rodenja, pac.punkt_cijepljenja, cij.prva_doza_datum, cij.prva_doza_status, cij.druga_doza_datum, cij.druga_doza_status, cij.vrsta_cjepiva, c.naziv_cjepiva FROM cijepljenje cij LEFT JOIN pacijenti pac ON cij.oib = pac.oib LEFT JOIN cjepiva c ON cij.vrsta_cjepiva = c.id  WHERE cij.druga_doza_status<>'Cijepljen'";
     
     $stmt = $this->conn->prepare($query);
     $stmt->execute();
@@ -149,7 +149,7 @@
 
   public function read(){
  
-    $query = "SELECT cij.oib, pac.ime, pac.prezime, pac.adresa, pac.grad, pac.zupanija, pac.datum_rodenja, cij.vrsta_cjepiva, cij.prva_doza_datum, cij.prva_doza_status, cij.druga_doza_datum, cij.druga_doza_status, cij.vrsta_cjepiva, c.naziv_cjepiva FROM cijepljenje cij LEFT JOIN pacijenti pac ON cij.oib = pac.oib LEFT JOIN cjepiva c ON cij.vrsta_cjepiva = c.id WHERE cij.druga_doza_status='Cijepljen'";
+    $query = "SELECT cij.oib, pac.ime, pac.prezime, pac.adresa, pac.grad, pac.zupanija, pac.datum_rodenja, pac.punkt_cijepljenja, cij.vrsta_cjepiva, cij.prva_doza_datum, cij.prva_doza_status, cij.druga_doza_datum, cij.druga_doza_status, cij.vrsta_cjepiva, c.naziv_cjepiva FROM cijepljenje cij LEFT JOIN pacijenti pac ON cij.oib = pac.oib LEFT JOIN cjepiva c ON cij.vrsta_cjepiva = c.id WHERE cij.druga_doza_status='Cijepljen'";
     
     $stmt = $this->conn->prepare($query);
     $stmt->execute();

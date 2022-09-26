@@ -44,6 +44,7 @@ include_once '../../models/vaccination.php';
       'zupanija' => $zupanija,
       'oib' => $oib,
       'datum_rodenja' => $datum_prikaz_rodenje,
+      'punkt_cijepljenja' => $punkt_cijepljenja,
       'vrsta_cjepiva' => $vrsta_cjepiva,
       'naziv_cjepiva' => html_entity_decode($naziv_cjepiva),
       'prva_doza_datum' => $datum_prikaz_1,

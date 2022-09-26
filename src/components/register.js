@@ -97,7 +97,7 @@ const Register = () => {
                 <select class="selectPunkt"
                 name="selectedOption"
                     onChange={onChangeInput}>
-                        {punktovi.map((item) => <option key={item.id} value={item.id}>{item.naziv_punkta}</option>
+                        {punktovi.map((item) => <option key={item.id} value={item.naziv_punkta}>{item.naziv_punkta}</option>
                     )}
                     </select>
                 </div>

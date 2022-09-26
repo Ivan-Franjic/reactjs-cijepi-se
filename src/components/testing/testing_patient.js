@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
-import Select from '@material-ui/core/Select'
-import MenuItem from '@material-ui/core/MenuItem'
 import FormHelperText from '@material-ui/core/FormHelperText'
-import InputLabel from '@material-ui/core/InputLabel'
-import FormControl from '@material-ui/core/FormControl'
-import { Link, useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import SearchBar from 'material-ui-search-bar';
-import EditIcon from '@mui/icons-material/Edit';
-import * as FaIcons from 'react-icons/fa'
+import { useLocation } from 'react-router-dom';
+import { FaCalendar, FaPencilAlt } from "react-icons/fa";
 import {
   Delete,
   Visibility,
@@ -31,7 +27,7 @@ import {
   TableFooter,
   TablePagination,
 } from '@material-ui/core';
-import './testing_history.css'
+import './testing.css'
 
 const useStyles = makeStyles({
     table: {
@@ -122,61 +118,20 @@ const useStyles = makeStyles({
     rowsPerPage: PropTypes.number.isRequired,
   };
 
-
-  const Testiranje_povijest = (props) => {
+  const Testing_patients = (props) => {
     const [rows, setRows] = useState();
     const [oRows, setORows] = useState();
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
     const [searched, setSearched] = useState('');
-    const [isSelectActive, setIsSelectActive] = useState(false)
-    const [zupanije, setZupanije] = useState([])
-    const [zupanija, setZupanija] = useState('')
-    const [povijest_testiranja, setPovijest_testiranja] = useState([])
-    const [pt, setPt] = useState([])
-  
+    const location = useLocation();
+
     const myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
-    const requestOptions = {
-      method: 'GET',
-      heders: myHeaders,
-    }
-
-    const url_zupanije =
-  'http://localhost/vuv-cijepi-se/API/api/vaccination/read-counties.php'
-
-  const url_povijest_testiranja =
-  'http://localhost/vuv-cijepi-se/API/api/testing/read-testing-history.php'
-
-    const getZupanije = async () => {
-      const res_zupanije = await fetch(url_zupanije, requestOptions)
-      const zupanije = await res_zupanije.json()
-      setZupanije(zupanije)
-    }
-
-    const getPovijest_testiranja = async () => {
-      const res_povijest_testiranja = await fetch(url_povijest_testiranja, requestOptions)
-      const povijest_testiranja = await res_povijest_testiranja.json()
-      setPt(povijest_testiranja)
-      setPovijest_testiranja(povijest_testiranja)
-    }
-
-    const handleChangeZupanija = (zupanija) => {
-      setZupanija(zupanija)
-      if (zupanija === 'all') {
-        setIsSelectActive(false)
-      } else {
-        setPt(povijest_testiranja.filter((data) => data.zupanija === zupanija))
-        pt && setIsSelectActive(true)
-      }
-    }
-
     useEffect(() => {
-      getZupanije()
-      getPovijest_testiranja()
       updateRows()
     }, [])
-  
+
     const classes = useStyles()
 
     const requestSearch = (searchedVal) => {
@@ -204,7 +159,7 @@ const useStyles = makeStyles({
 
     function updateRows() {
       fetch(
-        'http://localhost/vuv-cijepi-se/API/api/testing/read-testing-history.php',
+        'http://localhost/vuv-cijepi-se/API/api/testing/read-tests-patient.php',
         {
           method: 'GET',
           mode: 'cors',
@@ -220,28 +175,13 @@ const useStyles = makeStyles({
 
     return (
         <>
-        <FormControl className='selectpt'>
-        <InputLabel id='lbl-povijest_testiranja'></InputLabel>
-        <Select
-          disableUnderline
-          labelId='lbl-povijest_testiranja'
-          id='povijest_testiranja'
-          value={zupanija}
-          onChange={(e) => handleChangeZupanija(e.target.value)}
-        >
-          <MenuItem value='all'>Prikaži sve</MenuItem>
-          {zupanije.map((zupanija) => {
-            return (
-              <MenuItem key={zupanija.id} value={zupanija.naziv_zupanije}>
-                {zupanija.naziv_zupanije}
-              </MenuItem>
-            )
-          })}
-        </Select>
-        <FormHelperText className='helper'>Pregled po županiji</FormHelperText>
-      </FormControl>
-
-          <TableContainer className="table-povijest-testiranja" component={Paper}>
+          <FormHelperText className='naslovt'>Testovi<Link to={'/testing_patient/add/oib/' + props.user.oib}>
+                        <IconButton className='icon' collor='primary'>
+                        <FaPencilAlt />
+                        </IconButton>
+                      </Link></FormHelperText>
+          
+          <TableContainer className="table-testiranje" component={Paper}>
           {rows && (
                 <>
                 <SearchBar
@@ -255,78 +195,28 @@ const useStyles = makeStyles({
               <TableHead>
                 <TableRow>
                   <TableCell>Rbr.</TableCell>
-                  <TableCell align='right'>Ime</TableCell>
-                  <TableCell align='right'>Prezime</TableCell>
-                  <TableCell align='right'>Adresa</TableCell>
-                  <TableCell align='right'>Grad</TableCell>
-                  <TableCell align='right'>Županija</TableCell>
-                  <TableCell align='right'>OIB</TableCell>
-                  <TableCell align='right'>Datum rođenja</TableCell>
-                  <TableCell align='right'>Testovi</TableCell>
+                  <TableCell align='right'>Vrsta testa</TableCell>
+                  <TableCell align='right'>Datum testiranja</TableCell>
+                  <TableCell align='right'>Rezultat</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-              {isSelectActive === false
-              ? (rowsPerPage > 0
-                  ? rows.slice(
-                      page * rowsPerPage,
-                      page * rowsPerPage + rowsPerPage
-                    )
-                  : rows
-                ).map((row, index) => (
-                  <TableRow key={row.oib}>
-                    {props.user.punkt_cijepljenja === row.punkt_cijepljenja ? (
+              {(rowsPerPage > 0
+                        ? rows.slice(
+                            page * rowsPerPage,
+                            page * rowsPerPage + rowsPerPage
+                          )
+                        : rows
+                      ).map((row, index) => (
+                  <TableRow>
+                    {props.user.oib === row.oib ? (
                       <>
                     <TableCell component='th' scope='row'>
                       {index+1}.
                     </TableCell>
-                    <TableCell align='right'>{row.ime}</TableCell>
-                    <TableCell align='right'>{row.prezime}</TableCell>
-                    <TableCell align='right'>{row.adresa}</TableCell>
-                    <TableCell align='right'>{row.grad}</TableCell>
-                    <TableCell align='right'>{row.zupanija}</TableCell>
-                    <TableCell align='right'>{row.oib}</TableCell>
-                    <TableCell align='right'>{row.datum_rodenja}</TableCell>
-                    <TableCell>
-                      <Link to={'/tests'} state={row.oib}>
-                        <IconButton className='icon2' collor='primary'>
-                        <FaIcons.FaRegClipboard />
-                        </IconButton>
-                      </Link>
-                    </TableCell>
-                    </>
-                    ) :(
-                      ''
-                      )}
-                  </TableRow>
-                ))
-              :(rowsPerPage > 0
-                        ? pt.slice(
-                            page * rowsPerPage,
-                            page * rowsPerPage + rowsPerPage
-                          )
-                        : pt
-                      ).map((row, index) => (
-                        <TableRow key={row.oib}>
-                        {props.user.punkt_cijepljenja === row.punkt_cijepljenja ? (
-                          <>
-                    <TableCell component='th' scope='row'>
-                      {index+1}.
-                    </TableCell>
-                    <TableCell align='right'>{row.ime}</TableCell>
-                    <TableCell align='right'>{row.prezime}</TableCell>
-                    <TableCell align='right'>{row.adresa}</TableCell>
-                    <TableCell align='right'>{row.grad}</TableCell>
-                    <TableCell align='right'>{row.zupanija}</TableCell>
-                    <TableCell align='right'>{row.oib}</TableCell>
-                    <TableCell align='right'>{row.datum_rodenja}</TableCell>
-                    <TableCell>
-                      <Link to={'/testing_history/tests/oib/' + row.oib}>
-                        <IconButton className='icon2' collor='primary'>
-                          <EditIcon />
-                        </IconButton>
-                      </Link>
-                    </TableCell>
+                    <TableCell align='right'>{row.test}</TableCell>
+                    <TableCell align='right'>{row.datum}</TableCell>
+                    <TableCell align='right'>{row.rezultat}</TableCell>
                     </>
                     ) :(
                       ''
@@ -366,4 +256,4 @@ const useStyles = makeStyles({
     }
     
 
-export default Testiranje_povijest;
+export default Testing_patients;

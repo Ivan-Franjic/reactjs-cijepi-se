@@ -44,9 +44,9 @@ const Sidebar = (props) => {
               <li><NavLink className='link' activeClassName="active" to="/testing"><ImLab/>ㅤTestiranje</NavLink></li>
               <li><NavLink className='link' activeClassName="active" to="/testing_history"><FaFolder/>ㅤPovijest testiranja</NavLink></li></>
               : <>
-              <li><NavLink className='link' activeClassName="active" to="/status"><FaIcons.FaHourglassHalf/>ㅤStatus</NavLink></li>
-              <li><NavLink className='link' activeClassName="active" to="/testing"><ImLab/>ㅤTestiranje</NavLink></li>
-              <li><NavLink className='link' activeClassName="active" to="/testing_history"><FaFolder/>ㅤPovijest testiranja</NavLink></li></>
+              <li><NavLink className='link' activeClassName="active" to="/profile"><FaIcons.FaHourglassHalf/>ㅤProfil</NavLink></li>
+              <li><NavLink className='link' activeClassName="active" to="/testing_patient"><ImLab/>ㅤTestiranje</NavLink></li>
+             </>
               }
             {props.user !== null ? (
               <Button

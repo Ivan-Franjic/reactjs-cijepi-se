@@ -39,6 +39,7 @@ include_once '../../models/testing.php';
       'zupanija' => $zupanija,
       'oib' => $oib,
       'datum_rodenja' => $datum_prikaz_rodenje,
+      'punkt_cijepljenja' => $punkt_cijepljenja,
       'test' => $test,
       'datum' => $datum_prikaz_1,
       'rezultat' => $rezultat

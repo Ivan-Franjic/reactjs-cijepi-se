@@ -275,7 +275,7 @@ const useStyles = makeStyles({
                     )
                   : rows
                 ).map((row, index) => (
-                  <TableRow key={row.oib}>
+                  <TableRow>       
                     {props.user.punkt_cijepljenja === row.punkt_cijepljenja ? (
                       <>
                   <TableCell component='th' scope='row'>
@@ -308,11 +308,11 @@ const useStyles = makeStyles({
                           )
                         : nc
                       ).map((row, index) => (
-                  <TableRow key={row.oib}>
+                  <TableRow>
                     {props.user.punkt_cijepljenja === row.punkt_cijepljenja ? (
                       <>
                     <TableCell component='th' scope='row'>
-                      {index+1}
+                      {index+1}.
                     </TableCell>
                     <TableCell align='right'>{row.ime}</TableCell>
                     <TableCell align='right'>{row.prezime}</TableCell>

@@ -11,6 +11,7 @@
   public $zupanija;
   public $oib;
   public $datum_rodenja;
+  public $punkt_cijepljenja;
   public $test;
   public $datum;
   public $rezultat;
@@ -21,7 +22,7 @@
 
   public function read(){
 
-    $query = "SELECT t.id, t.oib, pac.ime, pac.prezime, pac.adresa, pac.grad, pac.zupanija, pac.datum_rodenja, t.test, t.datum, t.rezultat FROM testiranje t LEFT JOIN pacijenti pac ON t.oib = pac.oib WHERE t.rezultat='Na čekanju'";
+    $query = "SELECT t.id, t.oib, pac.ime, pac.prezime, pac.adresa, pac.grad, pac.zupanija, pac.datum_rodenja, pac.punkt_cijepljenja, t.test, t.datum, t.rezultat FROM testiranje t LEFT JOIN pacijenti pac ON t.oib = pac.oib WHERE t.rezultat='Na čekanju'";
     
     $stmt = $this->conn->prepare($query);
     $stmt->execute();
@@ -74,7 +75,7 @@
 
    public function read_history(){
 
-    $query = "SELECT DISTINCT t.oib, pac.ime, pac.prezime, pac.adresa, pac.grad, pac.zupanija, pac.datum_rodenja FROM testiranje t LEFT JOIN pacijenti pac ON t.oib = pac.oib";
+    $query = "SELECT DISTINCT t.oib, pac.ime, pac.prezime, pac.adresa, pac.grad, pac.zupanija, pac.datum_rodenja, pac.punkt_cijepljenja FROM testiranje t LEFT JOIN pacijenti pac ON t.oib = pac.oib";
     
     $stmt = $this->conn->prepare($query);
     $stmt->execute();
@@ -91,6 +92,40 @@
     $stmt->execute();
  
     return $stmt;
+   }
+
+   public function read_tests_patient(){
+
+    $query = "SELECT t.oib, t.test, t.datum, t.rezultat FROM testiranje t";
+    
+    $stmt = $this->conn->prepare($query);
+
+    $stmt->execute();
+ 
+    return $stmt;
+   }
+
+   public function create(){
+    $query = 'INSERT INTO ' .$this->table.' SET oib = :oib, test = :test, datum = :datum, rezultat = :rezultat';
+    
+    $stmt = $this->conn->prepare($query);
+ 
+    $this->oib = htmlspecialchars(strip_tags($this->oib));
+    $this->test = htmlspecialchars(strip_tags($this->test));
+    $this->datum = htmlspecialchars(strip_tags($this->datum));
+    $this->rezultat = htmlspecialchars(strip_tags($this->rezultat));
+ 
+    $stmt->bindParam(':oib', $this->oib);
+    $stmt->bindParam(':test', $this->test);
+    $stmt->bindParam(':datum', $this->datum);
+    $stmt->bindParam(':rezultat', $this->rezultat);
+ 
+    if($stmt->execute()) {
+      return true;
+    }else{
+     print_r($stmt->errorInfo()); 
+     return false;
+    }
    }
 
  }
